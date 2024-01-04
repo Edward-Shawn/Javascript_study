@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //var의 문제점
+      function testShadowing() {
+        var x = 5;
+
+        if (true) {
+          var x = 10; // 10이라는 값을 주면서 상단의 5의 값을 가지고 있는 x에 재할당이됨 var는 함수에 스코프를 가지기 때문
+          console.log(x);
+        }
+        console.log(x); // 둘다 10이 출력됨
+      }
+      testShadowing();
+
+      function testShadowing2() {
+        let x = 5;
+
+        if (true) {
+          let x = 10; // 반대로 let은 블록에 스코프를 가지고 있음
+          console.log(x);
+        }
+        console.log(x); // 그래서 10, 5로 각각 출력됨
+      }
+      testShadowing2();
+    </script>
+  </body>
+</html>

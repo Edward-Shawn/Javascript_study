@@ -39,6 +39,45 @@
 
       console.log({ greeting });
       console.log({ testA });
+
+      //객체라는 컨테이너를 생성
+      let sample = {};
+
+      function foo1(obj) {
+        obj.name = "손병현";
+        obj.age = "31";
+      }
+
+      //빈값
+      console.log(sample);
+      //파라미터를 전달
+      foo1(sample);
+      //값 확인
+      console.log(sample);
+
+      let sample1 = 1; // 기본형
+
+      function foo2(num) {
+        num++;
+        num++;
+        num++;
+      }
+
+      console.log(sample1);
+      foo2((num = sample1)); // 1을 주고 있지만 또다른 1이 선언이 되어있음
+      console.log(sample1);
+
+      let sample2 = []; // 참조형 ( 컨테이너 )
+
+      function foo3(num) {
+        num.push(1);
+        num.push(2); // push를 통해 값을 보내줌
+      }
+
+      console.log(sample2);
+      foo3(sample2); // 참조형
+      console.log(sample2);
+      // 첫번째 sample2와 두번째 sample2의 값은 둘다 배열 안에 1, 2의 값을 참조하고 있음
     </script>
   </body>
 </html>
