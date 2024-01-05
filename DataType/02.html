@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // undefined와 null 둘다 값이 없음을 의미
+      var a = null; // null은 개발자가 값이 없음을 '명시적'으로 설정하는것
+      //console.log({ a }); //변수를 선언만하고 값을 할당하지 않아서 undefined가 뜸
+
+      let b; // 값 초기화를 안 할 경우 자바스크립트에서 자동적으로 undefined라고 '묵시적'으로 명시함
+      //console.log({ b });
+
+      const c = 12; // const 사용시 에러가 발생함 상수는 항상 선언과 동시에 값을 초기화해줘야함
+      // 변수처럼 초기값이 없는상태에서 추가로 c = 2; 이런식으로 값을 재할당을 할 수 없기때문에
+      //console.log({ c });
+
+      function div(a, b) {
+        return a / b;
+      }
+      //console.log(div(10, 1));
+
+      const str = "abcd";
+      console.log(str.indexOf("d")); // 문자 타입에는 문자로 해당값을 찾고 그 값의 index위치의 숫자를 알려줌 d는 index 3에 해당하므로 3이 나옴
+      console.log([1, 2, 3, -1].indexOf(2)); //indexOf에 숫자를 숫자에 해당하는 배열속의 index를 알려줌 숫자2는 배열에서 인덱스 1번이게때문에 값은 1
+      console.log([1, 2, 3, -1].indexOf(-2)); //indexOf에 숫자를 숫자에 해당하는 배열속의 index를 알려줌 숫자2는 배열에서 인덱스 1번이게때문에 값은 1
+
+      //   console.log([1, 2, 3, -1].find((it) => it === 10)); 숫자에서는 0이하의 값은
+    </script>
+  </body>
+</html>

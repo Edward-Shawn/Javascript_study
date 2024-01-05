@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function test() {
+        let i = 3;
+        if (true) {
+          let i = 5;
+          console.log(i);
+        }
+        // for (var i = 1; i < 3; i++) {
+        //   console.log(i);
+        // }
+        console.log(i);
+      }
+
+      //   test();
+
+      function test2() {
+        // var i = 3;
+        // if (true) {
+        //   var i = 5;
+        //   console.log(i);
+        // }
+        for (var i = 1; i < 3; i++) {
+          // for문이 도는 시간이 setTimeout보다 빨리 돌기 때문에
+          setTimeout(function () {
+            console.log(i);
+          }, 1000);
+        }
+        console.log("asdf", i); // 이것이 먼저 출력됨
+      }
+
+      test2();
+    </script>
+  </body>
+</html>
