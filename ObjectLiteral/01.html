@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 데이터 타입 - 객체타입
+
+      // 둘다 오브젝트 표현방식의 차이는 있지만 표현이 간단해서 주로 첫번째 방식을 사용
+      const objectName = {}; // 오브젝트 리터럴 사용
+      const objectName2 = new Object(); // 오브젝트 생성자 이용
+
+      const person = {
+        name: "coding max",
+        age: 20,
+      };
+
+      const dog = {
+        name: "max",
+        age: 2,
+      };
+
+      // 객체의 속성은 값을 변경할 수 있음
+      //   console.log(person.name);
+      //   person.name = "coding";
+      //   console.log(person.name);
+
+      // '.' 연산자 person.name 이렇게 표현하는게 번거로울 수 있다
+      // 이때 객체 분해, 객체 구조 분해가 있음
+      const { name, age } = person; // 객체에 필요한 속성을 따로 변수에 담는것
+      console.log({ name, age });
+      // const { name, age } = dog; // 다른 속성을 불러오는데 변수명이 중복되어 에러가 나는경우가 있음
+      // 그럴경우 속성값에 다른 이름을 지어주면 됨
+      const { name: myDogName, age: myDogAge } = dog;
+      console.log({ myDogName, age: myDogAge });
+    </script>
+  </body>
+</html>
