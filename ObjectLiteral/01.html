@@ -26,16 +26,35 @@
       // 객체의 속성은 값을 변경할 수 있음
       //   console.log(person.name);
       //   person.name = "coding";
-      //   console.log(person.name);
+      //   console.log(person.name); // 객체 속성 접근방식 점표기법
+      //   console.log(person["name"]); // 객체 속성 접근방식 괄호기법
 
       // '.' 연산자 person.name 이렇게 표현하는게 번거로울 수 있다
       // 이때 객체 분해, 객체 구조 분해가 있음
       const { name, age } = person; // 객체에 필요한 속성을 따로 변수에 담는것
-      console.log({ name, age });
+      //console.log({ name, age });
       // const { name, age } = dog; // 다른 속성을 불러오는데 변수명이 중복되어 에러가 나는경우가 있음
       // 그럴경우 속성값에 다른 이름을 지어주면 됨
       const { name: myDogName, age: myDogAge } = dog;
-      console.log({ myDogName, age: myDogAge });
+      //console.log({ myDogName, myDogAge });
+
+      const car = {
+        carname: "mustang",
+        year: 2017,
+      };
+
+      const car02 = {
+        carname: "bentz",
+        year: 2017,
+      };
+
+      // delete car.carname; // name속성 삭제 delete키워드
+
+      const { carname } = car;
+      const { carname: c } = car02;
+      console.log(car.carname);
+      car.carname = "camaro";
+      console.log(car.carname);
     </script>
   </body>
 </html>
