@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 배열의 원소 삭제 교체 추가 가능한게 splice가 있음
+      // splice(startIndex, deleteCount, items)
+      const item = [1, 2, 3, 4];
+      item.splice(1, 0, "a");
+      // 여기서 원하는 위치에 배열 원소를 추가하려면 원하는 인덱스위치 1, 삭제없이 추가니까 0, 그리고 추가할 요소 'a'
+      //   console.log(item);
+
+      //   console.log(item.splice(1));
+
+      // slice
+
+      const numbers = [1, 2, 3, 4, 5];
+      console.log(numbers.slice(1, 3)); // 시작 인덱스 1, 3이지만 마지막 인덱스는 반영을 안하니 3에서 1을 뺀 2 즉 1,2번째 인덱스를 불러옴
+      //   const subNumbers = numbers.slice(1, 3);
+      //   console.log(subNumbers);
+      //   console.log(numbers);
+
+      //   const sub2 = numbers.slice(1);
+      //   console.log(sub2);
+    </script>
+  </body>
+</html>

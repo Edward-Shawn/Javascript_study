@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 객체는 중괄호 배열은 대괄호
+
+      // 배열 구조 분해
+      const [one, two, three, four] = [1, 2, 3, 4];
+      console.log({ one, two, three, four });
+
+      const users = [
+        { name: "kim", age: 10 },
+        { name: "son", age: 2 },
+      ];
+
+      const [{ name }, { age }] = users;
+      console.log({ name });
+      console.log({ age });
+    </script>
+  </body>
+</html>

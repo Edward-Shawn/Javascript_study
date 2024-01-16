@@ -38,11 +38,20 @@
       emtyArray.push("b");
       console.log(emtyArray);
 
-      // 배열 삭제 pop
+      // 배열 삭제 pop (배열 끝부분 삭제)
 
       const numbers2 = [1, 2, 3, 4];
       numbers2.pop();
       console.log(numbers2);
+
+      // 배열 추가 unshift, shift 배열 앞순서 추가, 꺼내기
+      const numbers3 = [1, 2, 3, 4];
+
+      numbers3.unshift(2);
+      console.log(numbers3);
+
+      console.log(numbers3.shift());
+      console.log(numbers3);
     </script>
   </body>
 </html>
