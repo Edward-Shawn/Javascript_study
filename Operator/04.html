@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 객체 spread 연산자
+
+      const person = { name: "coding shawn", age: 30 };
+      const clone = { ...person };
+      //   console.log(clone);
+
+      // 객체 병합
+
+      const info = {
+        addresss: "seoul",
+      };
+      const person2 = {
+        ...person,
+        ...info,
+      };
+
+      person2.name = "asdfsdf";
+      console.log({ ...person, ...person2 });
+
+      const item = {
+        name: "game",
+        info: {
+          price: 100,
+        },
+      };
+
+      const { name, ...rest } = item; // 나머지 연산 name을 추출하고 rest를 통해 남아있는 info를 가져옴
+      console.log(rest);
+    </script>
+  </body>
+</html>

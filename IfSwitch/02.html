@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // switch 조건문 또는 선택문
+      // expression 결과값이 여러개인 경우 if문보다 사용하기 좋음
+
+      let day = "sunday";
+      switch (day) {
+        case "월요일": // 케이스문이라고 함 케이스문이 switch의 표현식이 케이스문과 일치하면 결과값을 실행함
+          console.log("월요병");
+          break;
+        case "화요일": // 화, 수, 목은 목요일 케이스의 콘솔을 출력,
+        case "수요일": //케이스에 break를 사용하지 않으면 바로 다음 케이스문으로 넘어감
+        case "목요일": // 그래서 화요일을 입력해도 케이스 실행이 break가 있는 목요일 까지 넘어가서 작동함
+          console.log("러닝가는 날");
+          break;
+        case "금요일":
+          console.log("불금");
+          break;
+        case "토요일":
+        default: // 상위의 스위치문이 false일 경우 실행됨
+          console.log("요일은 한글로 입력바람");
+          break;
+      }
+
+      // 스위치는 값연산자 ==, 값타입연산자 === 중 값타입연산자를 사용함
+
+      let n = 1;
+      switch (n) {
+        case "1":
+          console.log("== 를 사용함");
+          break;
+        case 1: // n변수가 case 1에서 작동함 즉 값,타입 일치시 작동
+          console.log("=== 를 사용합니다");
+          break;
+      }
+    </script>
+  </body>
+</html>

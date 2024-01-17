@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // null 병합연산자 변수나 값이 null이나 undefined일 경우 기본값을 제공하기 위해 사용
+
+      const test1 = null;
+      const test2 = undefined;
+      const test3 = 0;
+
+      console.log(test1 ?? "default"); // 해당값이 null일경우 ?? 연산자를 이용해서 default를 출력
+      console.log(test3 ?? "default"); // 값이 0일경우 병합연산자는 default가 아닌 0을 출력함
+
+      // 다른 기능으로 논리연산 or || 이 있는데 이경우
+      // 단축평가처럼 앞이 false로 인식을 하고 뒤에 있는 값이 반환됨 이게 병합 연산자와 차이
+      // 만약 0이 의미가 있는 값이라면 논리연산은 의도치 않은 오류를 발생시킬 수 있음
+      // 그래서 null 병합 연산자를 사용하는이유고 더 정확한 연산자임
+      console.log(test3 || "default");
+
+      // null 병합 연산자 적용사례
+      function greet(name) {
+        const msg = name ?? "guest"; // 함수에 인자값이 없을경우 사용
+        console.log(msg);
+      }
+
+      greet();
+      greet("shawn");
+
+      // 제공 받는 api에 데이터가 없거나 항목이 존재하지 않을경우도 사용됨
+      const user = {
+        name: null,
+        age: undefined,
+        country: "korea",
+      };
+
+      const userName = user.name ?? "unknown";
+      const userAddress = user.address ?? "unknown";
+
+      console.log({ userName, userAddress });
+    </script>
+  </body>
+</html>

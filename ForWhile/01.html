@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // for문
+      // for, while문은 조건이 true가 될때까지 코드블럭을 재실행함
+      // 프로그래밍에서는 루프의 종료조건이 반드시 필요함
+
+      // 초기화식 조건식 증감식 순서로 작동
+      // 초기화식은 최초 한번만 실행하고 조건식 > 증감식 > 코드실행 > 조건식 > 증감식 > 코드실행 반복
+
+      //   for (var i = 1; i <= 3; i++) { // 루프돌고 조건식이 끝나면 for문 종료
+      //     console.log(i); // 해당 영역에는 3까지만 동작
+      //   }
+      //   console.log("end", i);
+      // 조건식에 맞춰서 3까지 동작후 증감식으로 인해 4가 나오지만 조건식에서 false가 되어서 for문에서는 출력이 안된것임
+      // var변수를 통해 for문 밖에서 호출하여 값이 변경된것을 확인
+
+      // for문 루프종료방법
+
+      //   for (let i = 1; i <= 10; i++) {
+      //     if (i === 5) {
+      //       console.log("for문을 종료", i);
+      //       break; // break를 걸지 않으면 해당 조건문이 실행 종료되면서 for문이 재실행됨
+      //       // break를 통해 루프문 자체를 종료함
+      //     }
+      //     console.log(i);
+      //   }
+
+      //   for (let i = 1; i <= 10; i++) {
+      //     if (i % 2 === 0) { // 짝수 건너뛰기
+      //       continue; // 해당 조건식에 맞는 루프 건너뛰고 실행
+      //     }
+      //     console.log(i);
+      //   }
+
+      //   for (let i = 1; i <= 10; i++) {
+      //     if (i === 5) { // 숫자 5에 해당하면 이것의 값을 건너뛰고 실행
+      //       continue;
+      //     }
+      //     console.log(i);
+      //   }
+
+      let i = 0; //for문 밖에다 초기화식 작성도 가능
+      for (;;) {
+        if (i > 10) {
+          // 탈출조건 - i가 10보다 클경우가 아니라면
+          console.log("종료");
+          break;
+        }
+        console.log(i);
+        i++;
+      }
+    </script>
+  </body>
+</html>

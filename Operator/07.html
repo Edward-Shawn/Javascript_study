@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 옵셔널 체이닝 api데이터 불러올때 사용해볼만한것
+      // 변수값이나 객체의 속성등이 null이나 undefined일 경우 에러를 발생하는 경우가 있는데
+      // 없는경우의 null병합연산자 처럼 없을경우 에러처리없이 null이나 undefined를 출력
+
+      const user = {
+        name: "shawn",
+        info: {
+          age: 30,
+          country: "korea",
+        },
+      };
+
+      console.log(user.name);
+      console.log(user.info.age);
+      console.log(user.city?.state);
+      // user.city? 라고 표기했는데 물음표를 사용해서
+      // 해당값이 있으면 불러오고 해당값이 없을경우 undefined를 반환
+      // api의 경우 불러오는데 걸리는 시간이 있기때문에
+      // 로드전에 데이터가 없어 오류를 반환하는 경우때문에 사용함
+
+      const address = user.getAddress?.(); // 메서드의 경우에도 옵셔널 체이닝을 통해 호출가능
+    </script>
+  </body>
+</html>
