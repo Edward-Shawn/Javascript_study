@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 함수
+
+      function test(name) {
+        // 함수에 name이라는 파라미터를 선언
+        console.log(`hello ${name}`);
+      }
+      test("shawn"); // 함수명 + ()는 함수를 실행한다는 의미가 있음
+      // 그리고 괄호안에 인자값을 주어서 함수 선언부에 나오는 변수 name에 입력함
+
+      function sum(a, b) {
+        return a + b;
+      }
+      const result = sum(10, 30);
+      console.log(result);
+
+      // 함수의 재사용 케이스
+      function lowerContent() {
+        // 해당함수는 내부에 있는 content라는 변수에 담긴 api만 사용가능한 문제가 있음
+        const content = fetch("som api url"); // 반복
+        return content.toLowerCase(); //반복
+      }
+
+      function upperContent() {
+        const content = fetch("some api url"); // 반복
+        return content.toLowerCase(); //반복
+      }
+
+      function words() {
+        const content = fetch("some api url"); // 반복
+        return content.split("");
+      }
+
+      // --- 재사용
+      // 아래처럼 재사용 함수를 작성하고 인자값을 (content)를 통해 값을 전달하여 인자값을 가공하여 리턴함
+
+      function requestContentApi() {
+        // api 호출 함수
+        return "hello! you are great!";
+      }
+
+      function toLowerContent(content) {
+        // api에 종속되지않음
+        // 즉 이전에 있던 함수 lowerContent처럼 api와 변환해주는 변수가 담긴 함수를 계속 작성할 필요가 없음
+        return content.toLowerCase();
+      }
+      function toUpperContent(content) {
+        return content.toUpperCase();
+      }
+
+      function toWords(content) {
+        return content.split(" ");
+      }
+
+      const content = requestContentApi(); // api를 받아왔다 치고
+      // 이전에는 함수안에 api를 호출해서 각 함수마다 api가 호출되는 문제가 발생했으나
+      // 여기서는 한번만 호출하여 아래처럼 데이터 가공이 필요한 함수에 인자값으로 전달하여 사용)
+
+      console.log("재사용", toLowerContent(content));
+      console.log("재사용", toUpperContent(content));
+      console.log("재사용", toWords(content));
+
+      // 어떤 함수를 작성할때 재사용 가능한 부분이 뭔지 파악하고 잘게 나눠서 필요할때 꺼내서 사용하게 만드는 연습필요함
+      // toLowerContent에 인자값을 api로 받아온 변수 content를 집어 넣어서 호출함
+      console.log("함수합성 사용", toWords(toUpperContent(content)));
+      //함수합성 사용시 중요한게 사이드 이펙트가 없는 순수 함수여야함
+
+      //함수 종류
+
+      function greet() {
+        // 반환값도 없고 파라미터도 없는 함수
+        // 문제해결이 굉장히 어려움 - 파라미터로 받아오는것과 입력이 없음
+      }
+
+      //함수 작성할때 반드시 어떤 문제 해결 과정에 참여가 가능하게 반환값이 있거나 파라미터만 있던가 하는 함수로 만들어야함
+
+      //반환값만 있는 함수 (주로 문제의 시작점이 됨)
+      function requestApiTest() {
+        return "반환값만 있는 함수"; // 반환값이 존재하기때문에 테스트하기 편리함
+      }
+
+      // 반환값과 파라미터가 있는 함수 (이것도 주로 문제의 시작점이 됨 + 문제 해결과정에서도 많이 쓰임 왜냐면 입력과 출력이 있기때문 ( 아까 재사용하던 함수참조 ))
+      function toLowerContentTest(content) {
+        // 해당 함수처럼 입력, 출력값이 같이 있는게 베스트
+        return content.toLowerCase();
+      }
+      function requestApiTest2(apiUrl) {
+        return fetch(apiUrl);
+      }
+
+      // 문제해결의 종료점이 되는 케이스가 많음 ex) logResult() << 이런식으로 로그 출력, 파일저장등등
+      function logResult(result) {
+        // 파라미터만 있는 함수 - 파라미터만 받아오는거보다 return을 통해 출력가능하게 만드는게 좋다 값을 받아오고 출력하는데 성공 실패여부 확인때문에
+        console.log(result);
+      }
+    </script>
+  </body>
+</html>
