@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // while & do ~ while 반복문
+      // 이벤트 루프, 게임 렌더링 루프에서 자주사용
+      // gui 앱이 이벤트 기반임
+
+      // 특정조건이 완료될때까지 계속 실행하는 루프
+      let i = 0;
+      while (i <= 3) {
+        console.log(i);
+        i++;
+      }
+
+      // 순차적으로 실행되는 루프, index가 필요한 루프, 배열 요소를 순환적으로 접근해서 실행하는 루프에 사용
+      for (let i = 0; i <= 3; i++) {
+        console.log("for", i);
+      }
+
+      //do & while
+
+      do {
+        console.log("do"); // do & while에서 do는 while이 false상태여도 최소 한번은 실행됨
+      } while (false);
+
+      // 실제 사용사례
+      let limitCount = 0;
+      let requestApi;
+      do {
+        requestApi = false; // api를 호출함
+        limitCount++;
+      } while (!requestApi && limitCount < 3); // 근데 api호출을 실패했음 > 다시 do의 api호출을 success가 ture로 나올때 까지 실행
+      // 근데 이럴경우 ture가 나올때까지 무한 루프가 돌 수 있음 그래서 호출횟수 제한을 걸기도함
+      console.log(limitCount);
+      console.log(requestApi);
+    </script>
+  </body>
+</html>

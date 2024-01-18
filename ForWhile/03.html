@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // for in 반복문
+      // 주로 object에 많이 사용됨
+      const numbers = [1, 2, 3, 4];
+      // 열거가능한 속성들(let, const)만 나열(key)해줌
+      for (const key in numbers) {
+        console.log(key);
+      }
+      const chars = "abcd"; // 문자열도 index로 나열 가능함
+      for (const key in chars) {
+        console.log(key);
+      }
+      // for루프에는 뮤테이션 때문에 let을 사용했었음 그러나 const를 사용하는 이유는
+      // 변수의 값이 변경되는게 아니라 매번 새로운 블럭범위가 실행이 되기 때문 (key가 매번 새로생김)
+
+      const person = {
+        name: "shawn",
+        age: 30,
+        address: "seoul",
+        greet: function () {
+          // 객체의 메서드도 열거가 가능함, symbol은 불가능
+          //console.log(`hello im ${this.name}`);
+        },
+      };
+
+      for (const key in person) {
+        //console.log(`${key} = ${person[key]}`);
+      }
+    </script>
+  </body>
+</html>
