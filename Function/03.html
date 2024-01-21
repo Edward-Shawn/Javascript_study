@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 함수의 파라미터 그리고 아규먼트
+      // parameter, argument
+      // 값복사, 참조전달
+
+      function greet(name = "guest") {
+        // 함수의 파라미터에는 기본값을 넣을 수 있음
+        console.log(`hello, ${name}`);
+      }
+
+      greet(); // 그래서 이렇게 인자값을 넣지 않아도 기본값으로 guest가 출력이 됨
+      greet("asdf");
+
+      function sum(a = 10, b) {
+        // 기본값은 맨 뒤에 넣어야함 a에 기본값이 선언되어서 건너뛰고 b에 선언이 될것처럼 보이지만 값이 a에 할당이 됨
+        console.log({ a, b });
+      }
+      sum(20); // {a:20, b:undifined}가 출력됨
+      sum(20, 20); // 이렇게 파라미터에 갯수에 맞게 인자값을 넣으면 출력이 잘됨
+
+      function point(x = 0, y = 0, z = 0) {
+        // 여러 파라미터에도 기본값을 부여하는게 가능함
+        console.log({ x, y, z });
+        return {
+          x,
+          y,
+          z,
+        };
+      }
+      point();
+    </script>
+  </body>
+</html>
