@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //값전달(값복사), 참조전달(얕은복사)
+      function increment(n) {
+        n += 1;
+      }
+      let mynumber = 1; //프리미티브 타입
+      increment(mynumber);
+      console.log(mynumber); //값복사
+
+      function addElement(arr) {
+        arr.push(4);
+      }
+      let myArr = [1, 2, 3]; //객체타입
+      addElement(myArr);
+      console.log(myArr); //얕은복사
+    </script>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 문자열 메서드
+
+      // 부분 문자열 추출
+      const msg = "1234";
+      // console.log(msg.substring(1)); // 인덱스로 제어
+      // console.log(msg.substring(1, 3)); // 엔드포인트가 있는경우 ( 옵셔널 )
+
+      // 인덱스 속성을 사용한 부분 문자열 검색
+      const msg2 = "hello world";
+      console.log(msg2.indexOf("world")); // 6
+      console.log(msg2.indexOf("o")); // 해당 위치의 인덱스 4가 나옴
+      console.log(msg2.lastIndexOf("o")); // 동일한 문자값이 있을경우 마지막에 위치한 인덱스를 출력 값은 7
+
+      // 문자열 검색시 해당값이 없을 경우  -1을 출력함
+      console.log(msg2.indexOf("x"));
+      console.log(msg2.lastIndexOf("x"));
+
+      // 문자열 검색
+      console.log(msg2.startsWith("he")); // true
+      console.log(msg2.startsWith("he", 5)); // false 옵셔널로 넣은 인덱스 값이 문자열 시작점과 일치 하지 않아서 발생
+      console.log(msg2.startsWith("wo", 6)); // true 옵셔널로 넣은 인덱스 값이 문자열 시작점과 일치
+
+      console.log(msg2.endsWith("ld"));
+    </script>
+  </body>
+</html>
