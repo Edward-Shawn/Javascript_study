@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 배열 메서드와 선언형 프로그래밍 ( 리스트 연산 )
+      // of, from
+
+      // 기존 배열 생성시
+      //   const a = [];
+      //   const b = new Array();
+
+      // 이방법 외에도 of, from으로 배열생성이 가능함
+      //Array.of
+      console.log(Array.of(1, 2, 3, 4));
+      const address = Array.of("대한민국", "경기도", "성남시");
+
+      console.log(address.join(" "));
+      const famaily = Array.of(
+        { name: "shawn", age: 10 },
+        { name: "gang", age: 1 }
+      );
+      console.log(famaily);
+
+      //Array.from
+      const chars = Array.from("hello shawn");
+      console.log(chars);
+
+      const numberSet = new Set([1, 2, 3, 4, 5]);
+      const numbers = Array.from(numberSet);
+
+      console.log(numbers);
+
+      let numbers2 = Array.of(1, 1, 2, 2, 3, 3);
+      numbers2 = Array.from(new Set(numbers2)); //Set은 배열속 중복값을 제거할때도 사용함 근데 배열의 중복 갯수가 엄청 많을때는 권장하지 않음
+
+      const fiveItems = Array.from({ length: 5 }, () => 0); // arraylike인데 길이를 5로 설정하고 mapFunction을 통해서 가져오는게 가능
+      console.log(fiveItems);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 문자열 부분 교체
+
+      const msg = "hello world";
+      // console.log(msg.replace("world", "asdf"), { msg }); //원본은 건들지 않음 새로운 결과값이 생성됨
+      // console.log(msg.replace(/l/g, "L")); // 정규 표현식으로 해당하는 특정 문자열을 전부 수정도하는 것도 가능
+
+      const email = "sbh3834@naver.com";
+      // console.log(email.replace(/\.com$/, ".net")); // 정규 표현식
+
+      // 문자열 분리
+
+      const msg2 = "hello,my,world";
+      // console.log(msg2.split(",", 2));
+      // console.log(msg2.split(""));
+
+      // 문자열 합치기
+      const components = msg2.split(",");
+      // console.log(components);
+      // console.log(components.join(" "));
+      // console.log(components.join(","));
+      // console.log(components.join("-"));
+
+      // 문자열 반복
+      console.log(msg.repeat(3));
+
+      // 문자열 여백 채움
+      const msg3 = "hello";
+      console.log(msg3.padStart(10));
+      console.log(msg3.padStart(8, "*"));
+      [[[[[[]]]]]];
+
+      // 문자열 여백 지우기
+      const msg4 = "     hello,    world   ";
+      console.log(msg4.trim());
+      console.log(msg4.trimStart() + "!");
+      console.log(msg4.trimEnd());
+    </script>
+  </body>
+</html>
