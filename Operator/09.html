@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 검색 연산자
+
+      {
+        const numbers = Array.of(1, 2, 3, 4, 5);
+        const five = numbers.find((number) => number === 5); // 검색할 조건을 predicate라는 함수로 넘겨줌
+        console.log(five);
+      }
+      {
+        const numbers = Array.of(1, 2, 3, 4, 5);
+        console.log(numbers.find((n) => n % 2 === 0));
+      }
+      {
+        const numbers = Array.of(1, 2, 3, 4, 5);
+        console.log(numbers.findLast((n) => n % 2 === 0)); // 짝수를 찾을때 사용하지만 여러개의 짝수중 맨 뒤에있는 짝수를 찾고싶을때
+        // findLast를 사용함
+      }
+
+      {
+        const people = [
+          { name: "kim", age: 10 },
+          { name: "lee", age: 22 },
+          { name: "han", age: 45 },
+          { name: "park", age: 30 },
+        ];
+        console.log(
+          people.find((person) => 30 <= person.age && person.age < 40) //find 메서드로 객체의 내용을 검색하는게 가능함
+        );
+      }
+
+      {
+        const a = { name: "a" };
+        const b = { name: "b" };
+        const user = [a, b];
+        console.log(user.findIndex((user) => user.name === "b"));
+      }
+
+      {
+        const number = Array.of(1, 2, 3, 4, 5);
+        console.log(number.includes(1, 0));
+      }
+
+      // every, some
+      {
+        const number = Array.of(1, 2, 3, 4, 5);
+        console.log(
+          "every",
+          number.every((n) => n % 2 === 0) // 모든 원소가 짝수인가 > false
+        );
+        console.log(
+          "every",
+          number.some((n) => n % 2 === 0) // 원소중에 짝수인 원소가 한개라도 있는가 > true
+        );
+
+        console.log(
+          "every",
+          number.some((n) => n < 0) // 원소중에 음수가 한개라도 있는가 > false
+        );
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 배열 메서드 문자열 변환 연산자
+      {
+        const numbers = Array.of(1, 2, 3, 4, 5);
+        console.log(numbers);
+        console.log(numbers.join("-")); // join을 통해서 문자열로 변환가능하며 인자값을 통해 구분자를 넣어서 출력가능
+      }
+      {
+        const numbers = Array.from([1, 2, 3, 4, 5], (v) => v * 1000);
+        console.log(numbers);
+        console.log(numbers.toString());
+      }
+    </script>
+  </body>
+</html>

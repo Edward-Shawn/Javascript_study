@@ -8,37 +8,44 @@
   <body>
     <script>
       // 배열 메서드와 선언형 프로그래밍 ( 리스트 연산 )
-      // of, from
+      // 메서드(Method)는 {} 객체에 속한 함수 즉 객체의 속성중 함수인 것을 메서드라고 부름
+      // of, from 정적 메서드
 
       // 기존 배열 생성시
       //   const a = [];
       //   const b = new Array();
 
       // 이방법 외에도 of, from으로 배열생성이 가능함
-      //Array.of
+      //Array.of 를 사용하면 객체의 목록도 쉽게 사용이 가능함
       console.log(Array.of(1, 2, 3, 4));
       const address = Array.of("대한민국", "경기도", "성남시");
-
-      console.log(address.join(" "));
+      console.log(address.join(" ")); // 배열에 join이라는 메서드를 사용해서 하나의 문자열로 결합
       const famaily = Array.of(
         { name: "shawn", age: 10 },
         { name: "gang", age: 1 }
       );
       console.log(famaily);
 
-      //Array.from
-      const chars = Array.from("hello shawn");
+      // Array.from 다른 데이터소스에서 배열로 변경가능하기 때문에 정말 중요함
+      // Array.from(Iterable, ArrayLike객체(배열로 변경하려는 데이터 소스)가 옴
+      // 그리고 옵셔널로 mapFunction(이것은 Iterable, ArrayLike가 가지고 있는 원소에
+      // mapFunction을 적용해서 계산된 결과를 배열 요소로 만들때 사용 )이 옴)
+      // 또다른 옵셔널인 thisArg가 있는데 mapFunction안에 사용할 this값이 존재하면 여기에 전달해줌
+
+      // *Iterable 반복가능한 객체 *ArrayLike 유사 배열 객체
+
+      const chars = Array.from("hello shawn"); // 문자열을 배열로 분리시킴 Iterable > mapFunction
       console.log(chars);
 
-      const numberSet = new Set([1, 2, 3, 4, 5]);
-      const numbers = Array.from(numberSet);
+      const numberSet = new Set([1, 2, 3, 4, 5]); // set이라는 인스턴스를 from메서드에 전달할 수 있는 이유는 set이 Iterable이기 때문에가능함
+      const numbers = Array.from(numberSet); // numberSet이라는 집합을 배열로 변경시킴
 
       console.log(numbers);
 
       let numbers2 = Array.of(1, 1, 2, 2, 3, 3);
       numbers2 = Array.from(new Set(numbers2)); //Set은 배열속 중복값을 제거할때도 사용함 근데 배열의 중복 갯수가 엄청 많을때는 권장하지 않음
 
-      const fiveItems = Array.from({ length: 5 }, () => 0); // arraylike인데 길이를 5로 설정하고 mapFunction을 통해서 가져오는게 가능
+      const fiveItems = Array.from({ length: 5 }, () => 0); // arraylike인데 길이를 5로 설정하고 mapFunction을 통해서 개별값을 설정하는게 가능
       console.log(fiveItems);
     </script>
   </body>
