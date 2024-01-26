@@ -6,6 +6,17 @@
     <title>Document</title>
   </head>
   <body>
+    <div>
+      <div style="width: 50%; border: 1px solid red">
+        <iframe
+          src="https://giphy.com/embed/rfsjVNg3qVnvn86uvz"
+          frameborder="0"
+          class="giphy-embed"
+          allowfullscreen
+          style="pointer-events: none; width: 100%; height: 100%"
+        ></iframe>
+      </div>
+    </div>
     <script>
       // 배열 메서드 문자열 변환 연산자
       {
@@ -16,7 +27,8 @@
       {
         const numbers = Array.from([1, 2, 3, 4, 5], (v) => v * 1000);
         console.log(numbers);
-        console.log(numbers.toString());
+        console.log(numbers.toString()); // 배열이 중첩되어 있어도 하나의 문자열로 출력함 그리고 배열안에 배열이 있는 [1,2, [3, 4]]도 하나의 문자열로 변환함
+        console.log(numbers.toLocaleString("ko-kr"));
       }
     </script>
   </body>
