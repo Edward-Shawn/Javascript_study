@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // reduce
+      {
+        const number = Array.of(1, 2, 3, 4, 5)
+          .map((n) => Array.from({ length: n }).fill(n))
+          //   .reduce((acc, value) => [...acc, value].flat(), []);
+          .reduce((acc, value) => acc.concat(value), []);
+
+        //console.log(number);
+      }
+
+      {
+        const result = Array.of(1, 2, 3, 4, 5).reduce(
+          // 정방향 출력
+          (acc, value) => `${acc} ${value}`,
+          ""
+        );
+        console.log(result);
+      }
+
+      // reduce를 통한 최대값 찾기
+      {
+        const maxValue = Array.of(1, 2, 3, 4, 5).reduce(
+          (max, value) => Math.max(max, value) // 최대
+          //   Math.max(max, value) // 최소
+        );
+        console.log(maxValue);
+      }
+
+      // reduceRight 속성값을 누적계산할때 계산 방향에 따라 값이 달라질 수 있기 때문에 역방향에서 계산해오는것
+      {
+        const result = Array.of(1, 2, 3, 4, 5).reduceRight(
+          // 역방향 출력
+          (acc, value) => `${acc} ${value}`
+        );
+        console.log(result);
+      }
+    </script>
+  </body>
+</html>

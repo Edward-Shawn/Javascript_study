@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // map, filter, reduce
+      {
+        // map은 값의 타입을 바꿀수 있는 연산자 number to number
+        const mapTest = Array.of(1, 2, 3, 4, 5).map((n) => {
+          console.log(n);
+          return n * 2;
+        });
+        //console.log(mapTest);
+      }
+      {
+        // number to string
+        const mapTest = Array.of(1, 2, 3, 4, 5).map((n) => `${n}`);
+        //console.log(mapTest);
+      }
+      {
+        // 배열을 객체로 변경하는것도 가능함
+        // console.log(
+        //   Array.of(1, 2, 3, 4).map((n) => {
+        //     return {
+        //       age: n,
+        //     };
+        //   })
+        // );
+      }
+      // 배열 내부에 배열생성도 가능
+      {
+        console.log(
+          Array.of(1, 2, 3, 4, 5).map((n) => Array.from({ length: n }).fill(n))
+        );
+        console.log(Array.from({ length: 2 }).fill(1));
+      }
+
+      // map은 index에 접근도 가능함
+      {
+        const count = Array.of("하나", "둘", "셋", "넷", "다섯");
+        console.log(
+          Array.from({ length: 5 })
+            .fill(0)
+            .map((_, index) => count[index])
+        );
+      }
+
+      {
+        const count = Array.of("하나", "둘", "셋", "넷", "다섯");
+        console.log(count.map((e, i) => i));
+      }
+      // 배열 평탄화 flatMap
+      {
+        console.log(
+          Array.of(1, 2, 3, 4, 5).flatMap((n) =>
+            Array.from({ length: n }).fill(n)
+          )
+        );
+        // console.log(
+        //   Array.of(1, 2, 3, 4, 5).flatMap((n) =>
+        //     Array.from({ length: n }).fill(n)
+        //   )
+        // );
+      }
+
+      // filter
+      {
+        console.log(
+          "filter",
+          Array.from({ length: 10 }, (_, index) => index + 1).filter(
+            (n) => n % 2 === 1
+          )
+        );
+      }
+
+      // reduce 배열의 원소를 하나의 값으로 누적해서 계산하는 함수
+      // reduce((현재까지 누적된 값, 현재 원소값, 초기값) => 누적값 + 현재값, 초기값)
+      // reduce((첫번째 배열 인덱스, 현재 돌고 있는 요소) => 첫째값 + 현재값, 0)
+      {
+        const numbers = Array.from({ length: 10 }, (_, index) => index + 1);
+        console.log(numbers.reduce((acc, value) => acc + value));
+        // 값은 55가 출력됨 배열은 1부터 10까지 있고 이것을 1부터 10까지 누적으로 더하는 값임
+      }
+      {
+        const number = Array.of(1, 2, 3, 4, 5);
+        console.log(number.reduce((acc, value) => value));
+      }
+    </script>
+  </body>
+</html>
