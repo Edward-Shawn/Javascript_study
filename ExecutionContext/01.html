@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Execution Context
+
+      // lexical scope 변수와 함수를 선언당시 스코프가 결정됨
+      // 어떤 변수나 함수가 선언된 위치에서 접근가능한 목록임
+      let a = 10;
+      let b = 20;
+
+      function test1() {
+        // 함수는 로컬과 글로벌 스코프에 접근가능
+        // 2. test함수에서 접근가능한 상위 스코프로 가서 abc를 찾음
+        // 1. 함수 내부의 abc는 로컬 스코프에서 참고를 못함
+        console.log(a);
+        console.log(b);
+        console.log(c);
+      }
+
+      let c = 30; // 변수 c는 let으로 선언했기때문에 스크립트라는 스코프를 갖게됨
+      // 스크립트 스코프는 let과 const를 위한 글로벌 스코프의 일종임
+      // 그래서 변수와 함수가 글로벌 스코프에 선언되어 있다고 보면됨
+      // 즉 let c처럼 선언된 함수 아래에 호출해도 동일한 스코프에 위치하기때문에 값 참조가 가능함
+      test1();
+
+      // 크롬 개발자 도구의 디버거를 통해 스코프 확인이 가능
+      // 함수 test1()에서 접근 가능한 스코프는
+      // 스크립트 스코프인 변수 a, b ,c에 접근가능하며 글로벌 스코프에 접근 가능
+
+      // 반대로 test1()을 먼저호출하고 뒤에 let c = 30을 호출하면 작동을 안함
+      // c라는 변수는 인식을 하지만 값을 인식하지 못하는 상황 let, const변수에서 일어나는 문제
+    </script>
+  </body>
+</html>
