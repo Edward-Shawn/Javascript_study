@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      {
+        const one = function (b) {
+          console.log("one", b);
+          return b;
+        };
+
+        const compose = function (one) {
+          // 함수의 인자값에 one함수를 넣음
+          return function (a) {
+            return a;
+          };
+        };
+
+        const h = compose(one); // compose 함수에 인자값에 one이라는 함수를 집어넣고 변수 h로 선언
+        const result = h(3); // 해당 인자의 3은 compose함수 내부에 선언된 function(a)에 담김
+        console.log("result", result);
+      }
+
+      //   //   let numbers = [1, 5, 4, 2, 3];
+      //   //   numbers.sort(function (first, second) {
+      //   //     return first - second;
+      //   //   });
+
+      //   //   console.log(numbers);
+
+      //   function add2(num) {
+      //     return num + 2;
+      //   }
+      //   function multiply3(num) {
+      //     return num * 3;
+      //   }
+
+      //   console.log(multiply3(add2(5)));
+
+      {
+        function one(b) {
+          return b;
+        }
+
+        // 함수의 일급객체 성질
+        // 함수가 함수의 반환값으로 함수를 반환할 수 있다.
+        function test01(a) {
+          // 함수의 인자값으로 함수를 받아옴
+          // 함수 합성시 새로운 함수가 생성됨 반환값으로 새로운 함수를 만들어야함
+          return function (hValue) {
+            return hValue;
+          };
+        }
+
+        const d = test01(one);
+        const hValueResult = d(3); // h(hValue) 변수 h에는 hValue의 인자값이 담김
+        console.log("hValue", hValueResult);
+      }
+
+      {
+        function createMultiplier(m) {
+          // m이라는 인자에 2를 받아옴
+          return function (numbers) {
+            // 해당 함수는 dubble이라는 변수에 반환이 됨
+            return numbers * m;
+          };
+        }
+
+        const dubble = createMultiplier(2); //
+        console.log(dubble(10));
+      }
+
+      function one(b) {
+        return b;
+      }
+      function test01(a) {
+        return function (hValue) {
+          return hValue;
+        };
+      }
+
+      const d = test01(one);
+      const hValueResult = d(3);
+      console.log("hValue", hValueResult);
+    </script>
+  </body>
+</html>

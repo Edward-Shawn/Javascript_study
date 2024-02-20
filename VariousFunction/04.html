@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 콜백함수
+      // 비동기의 결과를 받기위해서만 사용하는게 아니고
+      // 커스텀 로직을 동적으로 적용할때 사용
+      // 함수인자에 plugin이 콜백함수
+      {
+        function printString(str, plugin) {
+          const result = plugin(str); // str의 인자값을 문자열을 꾸며주는 로직인 plugin에 담아 변수로 만듬
+          console.log(result);
+        }
+        function translate(value) {
+          return "핼로우, 월드";
+        }
+
+        // printString("hello, world", function (value) {
+        //   return translate(value);
+        // });
+
+        // 비동기 함수의 핸들러로 많이 사용
+        function fetchData(url, success, failed) {
+          // success, failed는 콜백함수
+          console.log(`fetching data from ${url}...`);
+          setTimeout(function () {
+            // 비동기 함수는 호출자에게 값을 바로 전달하는게 불가능 하기때문에 콜백이라는 핸들러를 받아서 데이터를 호출자에게 넘겨줘야함
+            // 비동기연산의 결과를 외부에서 받아오기 위해서 콜백함수는 필요함
+            //   const error = null;
+            const error = new Error("error");
+            const data = "you are great!";
+            if (error) {
+              failed(error);
+            } else {
+              success(data);
+            }
+          }, 1000);
+        }
+
+        // fetchData(
+        //   "https://api",
+        //   function (data) {
+        //     console.log(data);
+        //   },
+        //   function (error) {
+        //     console.log(error.message);
+        //   }
+        // );
+      }
+
+      {
+        // 동기 함수
+        function sync() {
+          console.log("동기 함수 hello world");
+          return 100;
+        }
+
+        //const result = sync();
+      }
+      {
+        // 비동기
+        function a_sync() {
+          setTimeout(function () {
+            console.log("비동기 함수 hello world");
+            return 100; // 여기에 반환되는 결과는 result1에 못 담김
+          }, 1000);
+          // a_sync함수 실행시 undefined 반환됨,
+          // 이유는 setTimeout이 실행되고 바로 종료되버리는데
+          // 지연시간 이전에 종료가 되기때문에 내부에 있는 함수의 return값 100을 못 가져옴
+          // 그래서 변수에 담을 수 없고 이벤트 지연시간이 끝나고 나중에 100의 값이 반환됨
+        }
+        //const result1 = a_sync();
+        //console.log(result1);
+      }
+    </script>
+  </body>
+</html>

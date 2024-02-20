@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 다양한 함수
+
+      // 1. 이름이 있는 일반 함수
+
+      // trim() 문자열 양쪽의 공백을 제거해주는 함수
+      //console.log(" asdf ".trim());
+      // 간단한 유닛 테스트, 작성한 함수의 결과를 측정할 때 assert문을 사용함
+      //console.log(" asdf ".trim() === "asdf");
+
+      // 일반함수에 문자열 공백 기능이 있는 기능을 만들기 위해
+      // 기존에 있는 trim()함수를 이용해서 만들어 사용하는것
+
+      // 함수 표현식과 익명 함수
+      // 함수 표현식은 변수에 함수를 할당하는 것
+      //   const add = function (a, b) {
+      //     // 변수명은 존재하는데 function이라는 함수 다음에 정의하는 이름이 없기 때문에 익명 함수라고도 함
+      //     return a + b; // 일반함수처럼 값도 반환이 됨
+      //   };
+      //   // 상수변수 const에도 담았지만 let에도 담을 수 있음
+      //   // 하지만 함수정의를 동적으로 변경할게 아니라면 let이나 var를 사용하는게 아닌 상수 const로 선언할 것
+
+      //   const factorial = function fact(n) {
+      //     // 그리고 익명함수가 아닌 이름이 있는 함수도 어떤 변수에 할당이 가능함
+      //     if (n <= 1) {
+      //       return 1;
+      //     }
+      //     return n * fact(n - 1);
+      //   };
+
+      // console.log(factorial(5)); 결과 120
+
+      // 합성 함수
+      const addOne = function (n) {
+        return n + 1;
+      };
+      const dubble = function (n) {
+        return n * 2;
+      };
+      // 함수의 로직을 어떤 값처럼 자유롭게 전달이 가능함
+      // 그래서 필요한 로직을 자유롭게 사용이 가능함
+
+      const compose = function (f, g) {
+        // 함수의 합성 f + g 함수
+        // f = addOne, g = dubble
+
+        return function (n) {
+          // 해당 함수의 인자값은 h(3)에서 가져온 3
+          return g(f(n));
+
+          //return dubble(addOne(n));
+        };
+      }; // 변수에 함수를 담을 수 없다면 compose처럼 합성 함수를 만들 수 없음
+
+      const h = compose(addOne, dubble); // compose에 2종류의 함수를 인자로 넣음
+      const result = h(3);
+      //console.log(result); //결과 8
+
+      // 함수는 함수의 인자로 받는것도 가능함
+      function calculator(operator, a, b) {
+        // 인자값 operator에 add함수를 전달 받음
+        return operator(a, b); // 전달받은 add함수에 (10 + 20)인자값을 리턴
+      }
+
+      function add(a, b) {
+        return a + b;
+      }
+      function sub(a, b) {
+        return a - b;
+      }
+
+      function mul(a, b) {
+        return a * b;
+      }
+
+      function div(a, b) {
+        return a / b;
+      }
+
+      //console.log(calculator(add, 10, 20));
+      //calculator 함수를 통해 operator에 로직이 담긴 함수를 통해 인자값으로 전달된 숫자를 계산
+
+      function test01(a, b) {
+        return function (n) {
+          // 함수로 정의 해줘야함
+          return a(n) + b(n);
+        };
+        // return a + b; 함수 선언 없이 그냥 인자값을 받아오면 해당 인자값이 문자열인지 숫자인지 파악이 안됨
+      }
+
+      function one(n) {
+        return n;
+      }
+
+      function two(n) {
+        return n;
+      }
+
+      const d = test01(one, two); // 함수의 인자에 2개의 함수를 넣어서 변수로 선언
+      const test01result = d(3); // 선언된 함수에 3이라는 인자값을 넣음
+      console.log(test01result);
+    </script>
+  </body>
+</html>

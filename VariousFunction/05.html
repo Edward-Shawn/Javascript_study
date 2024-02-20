@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 즉시 실행 함수 (선언과 정의가 이뤄짐, 기존함수처럼 파라미터로 인자값 받는게 가능함)
+      (function () {
+        console.log("asdfs");
+      })(); // 뒤에 괄호가 호출을 해주는 것
+
+      // 직접적으로 호출해야하는 일반적인 함수
+      function func() {
+        console.log(1);
+      }
+
+      func();
+
+      {
+        (function (name) {
+          console.log(`hello ${name}`);
+        })("shawn"); // 이름값이 함수의 파라미터에 전달됨
+      }
+      // 즉시 실행 함수는 전역 스코프의 오염을 막음
+
+      var message01 = "shawn";
+      // 이렇게 선언된 변수는 글로벌 this객체가 message01이라는 속성을 가지게됨
+      // window.message01 이렇게
+
+      //즉시 실행 함수에서는 글로벌에 접근이 안됨
+      (function () {
+        var message = "즉시실행 함수";
+        console.log(message);
+      })();
+      console.log(window.message); // 즉시실행 함수에서는 undefined가 뜸
+      // window.message을 찍어보면 undefined
+
+      // 큰 모듈같은것을 작업할때는 즉시 실행 함수에 묶어야 window객체에 속성과 함수가 포함이 안됨
+      // 포함이 되버리면 window객체가 무거워짐 > 성능저하
+
+      // private 변수를 만들 수 있음, 독립적인 스코프 만들기 가능, 모듈 패턴 구현 가능
+
+      var counter = (function (initialValue = 0) {
+        // private
+        let count = initialValue;
+
+        function increment() {
+          count++;
+          console.log(count);
+        }
+
+        function decrement() {
+          count--;
+          console.log(count);
+        }
+        return {
+          increment,
+          decrement,
+        };
+      })(); // 이렇게 작업해두면 하나의 모듈이 됨 즉시 실행 함수 뒤에 괄호를 안 붙이면 실행이 안됨
+
+      // 즉시 실행 함수를 변수로 만들고 내부 함수
+      counter.increment();
+      counter.decrement();
+
+      var counter = (function (initialValue = 0) {
+        // private
+        var count = initialValue; // 외부에서 자유롭게 접근이 불가능함
+
+        function getValue() {
+          // count변수를 함수에 담아 return을 시키면 자유롭게 접근가능하게 가능
+          // 읽기만 가능한 가능하기에 외부에 있는 count변수를 안전하게 지킬 수 있음
+          return count;
+        }
+
+        function increment() {
+          count++;
+          console.log(count);
+        }
+
+        function decrement() {
+          count--;
+          console.log(count);
+        }
+        return {
+          increment,
+          decrement,
+          getValue,
+        };
+      })(); // 즉시 실행 함수를 사용해서 클로저 형성
+
+      counter.increment(); // 클로저 내부에서 정의된 함수를 호출
+      counter.decrement();
+      counter.increment();
+      counter.increment();
+      console.log(counter.getValue());
+    </script>
+  </body>
+</html>
