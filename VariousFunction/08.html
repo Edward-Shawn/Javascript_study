@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 화살표 함수는 콜백함수나 어떤 함수의 파라미터로 전달 될때 사용됨
+      const process = {
+        name: "request some data api",
+        // 비동기 흉내내기 위해서 setTime사용, 이때 화살표 함수를 사용
+        procJob: function () {
+          console.log(`start: ${this.name}`);
+          setTimeout(() => {
+            // 콜백함수의 핸들러를 작성할때 사용 간결하기때문에 화살표 함수 사용
+            console.log(`finish: ${this.name}`);
+            // 이 위치의 화살표 함수의 this포인트는 일반함수의 this포인트를 상속받음
+          }, 1000);
+        },
+      };
+      // process.procJob();
+      // 함수 구분 사용 규칙
+      // 내부에서 this포인트가 필요할때는 일반함수를 정의하고
+      // 함수내부에 콜백함수가 필요할때 화살표 함수를 작성
+      // 객체의 this포인트는 일반함수가 필요하기 때문에 작성하고 그 내부에 비동기나 콜백함수를 작성할때
+      // 표현식 간소화를 위해서 화살표함수 사용
+
+      [1, 2, 3, 4].map((value) => `this is ${value}`); // 고차 함수에 인자를 전달할때도 많이 받는다
+      // 화살표함수는 prototype같은게 없다보니 일반 함수보다 가볍다 > 최적화 이점
+      // this포인터가 필요없는 경우에 화살표 함수를 사용
+
+      const obj = {
+        greet1: function () {
+          console.log("일반함수", this);
+        },
+        greet2: () => {
+          console.log("화살표 함수", this);
+        },
+        greet3: function () {
+          (() => {
+            console.log("일반함수 정의 후 화살표함수", this);
+          })();
+        },
+      };
+      //   obj.greet1();
+      //   obj.greet2();
+      //   obj.greet3();
+
+      // 어떨때 화살표 함수를 사용하는지
+      // 그리고 객체 내부에 화살표 함수의 this가 왜 해당 객체가 아닌지
+
+      const test01 = {
+        testName: "testName",
+        // testFunc: () => {
+        //   console.log(this === globalThis);
+        //   console.log(this.testName);
+        //   setTimeout(() => {
+        //     console.log(this.testName);
+        //   }, 1000);
+        // },
+        testFunc1: () => {
+          console.log("01 ", this);
+          console.log(this.testName);
+        },
+
+        testFunc2: function () {
+          (() => {
+            console.log("02 ", this);
+            console.log(this.testName);
+          })();
+        },
+      };
+      test01.testFunc1();
+      test01.testFunc2();
+    </script>
+  </body>
+</html>

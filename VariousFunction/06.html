@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 화살표 함수 es6에서 새로 도입된것
+
+      {
+        // es5 함수 표현식
+        function sum(a, b) {
+          return a + b;
+        }
+      }
+
+      {
+        // es6 함수 표현식
+        const sum = (a, b) => {
+          return a + b;
+        };
+      }
+
+      // 즉시 실행 함수에도 적용가능
+      //   ((name) => {
+      //     console.log(`hello ${name}`);
+      //   })("shawn");
+
+      // 일반 함수와 화살표 함수의 차이
+      //arguments객체에 접근 가능
+      function a(v1, v2) {
+        console.log(arguments);
+      }
+
+      // 화살표 함수는 arguments객체에 접근 불가능
+      //   const a = (v1, v2) => {
+      //     console.log(arguments); // 참조 오류발생
+      //   };
+
+      //   const testArrow = () => {
+      //     this.a_value = 10;
+      //   };
+
+      //   const obj_testArrow = new testArrow(); // 에러 발생
+
+      // prototype속성에 접근 불가, 객체와 관련된 작업이 불가
+      // 생성자 함수로 쓰이는게 불가능 prototype체이닝을 사용하는것도 불가
+
+      a(10, 20);
+    </script>
+  </body>
+</html>

@@ -69,6 +69,7 @@
       var counter = (function (initialValue = 0) {
         // private
         var count = initialValue; // 외부에서 자유롭게 접근이 불가능함
+        // var변수를 사용하면 함수 스코프를 갖기때문에 함수를 벗어나지 못함
 
         function getValue() {
           // count변수를 함수에 담아 return을 시키면 자유롭게 접근가능하게 가능

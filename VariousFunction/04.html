@@ -54,6 +54,19 @@
       }
 
       {
+        // 제어의 역전 : 함수의 제어권을 setTimeout함수가 가지고 있는것
+        // 콜백함수 관련용어로 나옴
+        setTimeout(function () {
+          // info
+        }, 1000);
+
+        function a() {
+          info;
+        }
+        a(); // 함수를 정의후 호출하면 여기에 호출제어권이 있음
+      }
+
+      {
         // 동기 함수
         function sync() {
           console.log("동기 함수 hello world");

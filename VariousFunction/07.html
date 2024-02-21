@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 화살표 함수와 일반 함수의 this바인딩을 잘 알고 있어야
+      // 언제 화살표 또는 일반 함수를 사용할지 판단 가능
+
+      {
+        var friend = "hi shawn";
+        function test1() {
+          // 왜냐면 현재의 함수가 글로벌 스코프에 선언이 되어 있기 때문에
+          console.log(`result ${this.friend}`); // 글로벌 실행 객체인 this로 바인딩
+        }
+        test1(); // result hi shawn
+      }
+      // 만약 var가 아니라 const로 선언하면 undefined발생함
+      // const로 선언하면 friend변수는 스크립트 스코프영역에 선언이 되기 때문에
+      // this인 글로벌 스코프 window객체에 접근하는 속성이기 때문에 스코프 체이닝을 안함
+      {
+        // const로 선언시
+        const friend02 = "hi shawn";
+        function test2() {
+          console.log(`result ${friend02}`); // this를 빼주면 스코프 체이닝을 해줘서 friend02값에 접근 가능
+        }
+        test2();
+      }
+
+      {
+        var friend = "hi shawn";
+        const my = "i m";
+        const test3 = () => {
+          // 화살표 함수는 일반함수와 결과가 동일하지만
+          // 자기가 선언된 주변의 컨텍스트를 상속 받음 그래서 자신만의 this가 없음
+          // 그래서 전역 스코프가 있을때는 일반함수와 this포인트는 동일
+          console.log(`result ${this.friend}`);
+          console.log(this.my); // this는 윈도우 객체에 접근하는 글로벌 스코프인데 my변수는 const로 선언된 스크립트 스코프영역이여서 접근이 안됨
+          console.log(my); // 그래서 이럴때는 일반함수와 동일하게 this 포인트를 빼주면됨
+          // this없이 호출된 변수는 스코프 체인을 거쳐서 스크립트, 글로벌 스코프를 검색하며 그 과정에서 my변수를 가져올 수 있음
+        };
+        test3();
+      }
+      // 전역 스코프에서 일반함수와 화살표 함수의 this포인트는 차이가 없음
+
+      // 그다음 객체 매서드로 사용될때 화살표랑 일반함수의 차이
+      {
+        const obj = {
+          // 일반함수에서 정의한 객체 메서드와 화살표 함수로 정의한 객체 메서드의 this포인트가 차이가 남
+          greet1: function () {
+            console.log(this); // 일반 함수로 호출한 객체obj로 바인딩이 됨
+          },
+          greet2: () => {
+            // 자체적인 렉시컬 this를 안 갖고 상위 스코프의 this를 상속 받음
+            // 화살표 함수는 자신이 정의된곳의 상위 스코프인 렉시컬 this를 상속 받음
+            console.log(this); // 글로벌로 바인딩이 됨
+            // 오브젝트 선언과 정의에는 실행 컨텍스트가 만들어 지는게 아니기때문에 렉시컬 this가 없다
+            //렉시컬 this는 실행 컨텍스트에 존재하기 때문에
+            // 글로벌 실행 컨텍스트가 만들어질때나 함수가 호출될때만 생성이 된다
+          },
+          greet3: function () {
+            (() => {
+              console.log(this);
+              // 객체 내부에서 화살표 함수를 사용하더라도 일반함수로 객체 메서드를 정의해야함
+            })();
+          },
+        };
+        obj.greet1();
+        obj.greet2();
+        obj.greet3();
+      }
+
+      // 자바스크립트는 실행될때 글로벌 실행 컨텍스트를 만듬, 실행 컨텍스트는 함수를 호출할때,
+      // 렉시컬 스코프는 이런 실행컨텍스트 안에 있는 this 포인트
+    </script>
+  </body>
+</html>
