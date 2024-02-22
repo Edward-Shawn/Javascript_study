@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // callback함수와 this 바인딩
+
+      //callback함수의 상위스코프가 선언된 함수라고 착각하기 쉬움
+      // 근데 callback함수가 일반함수로 작성되어 있기 때문에 this포인트는 윈도우 객체임
+
+      // 명시적으로 this포인트를 바인딩 해주는 수 밖에 없음 ex) callback.call(this) 인자값에 바인딩
+      // 화살표함수는 명시적으로 바인딩을해도 this포인트는 여전히 window객체임 (반복해서 얘기하지만 자체적인 this포인트가 없기 때문)
+      // 콜백함수에서 내부의 객체 속성에 접근하려면 일반함수로 작성된 함수여야하고
+      // 콜백함수를 호출하려는 부분에도 해당객체로 this포인트를 바인딩 해줘야함
+
+      //함수의 콜함수를 정의해서 객체를 바인딩하기보다는 객체의 메서드로 직접적으로 구현하는 곳이 많음
+
+      // 어떤 객체의 메서드에 콜백함수를 글로벌 스코프에 작성할때 화살표 함수는 this포인트 바인딩 측면에서 위험함
+      // 화살표함수의 상위 스코프를 객체의 메서드로 만드는 방법밖에는 없음
+    </script>
+  </body>
+</html>

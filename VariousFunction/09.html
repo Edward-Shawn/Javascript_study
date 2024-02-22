@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 템플릿 리터럴 태그 함수
+      {
+        function tagFunc(string, ...values) {
+          console.log("string", string);
+          console.log("values", values);
+        }
+
+        const name = "coding shawn";
+        const age = 30;
+        // tagFunc`hello ${name}`; // 함수에 `` 템플릿 리터럴 문자열을 인자로 받는 함수
+        // tagFunc`hello ${name} he is ${age} years old`;
+        // ``로 전달된 값은 함수에 인자로 전달됨
+        // 태그함수는 ${}을 기준으로 문자열을 나눔 그리고 빈 공백열도 그대로 전달됨
+      }
+
+      // 탬플릿 리터럴 태크 함수 문자열 제작에 자주 등장하는 for문 패턴
+      {
+        function upperCase(string, ...values) {
+          console.log("string", string);
+          console.log("values", values);
+
+          let result = "";
+
+          for (let i = 0; i < string.length; i++) {
+            // string 문자열 기준으로 루프가 실행됨
+            result += string[i]; // for문을 통해 접근한 string값을 result에 붙임
+            if (i < values.length) {
+              // 초기 실행시 i = 0, values.length는 2
+              // values[i] = 0번째, 즉 해당 값인 "coding shawn"를 문자열로 변경하고 대문자로 변경해서
+              // result에 붙임
+              result += String(values[i]).toUpperCase();
+            }
+          }
+          return result;
+        }
+
+        const name = "coding shawn";
+        const age = 30;
+        const result = upperCase`hello ${name} he is ${age} years old`;
+        console.log(result);
+      }
+
+      // css라이브러리에 적용된 사례
+      {
+        function css(string, ...values) {
+          console.log("string", string);
+          console.log("values", values);
+          let result = "";
+          // for문 자체는 순차적으로 붙이는 형태로 단순함
+          for (let i = 0; i < string.length; i++) {
+            result += string[i];
+            if (i < values.length) {
+              result += values[i];
+            }
+          }
+          return result;
+        }
+        const color = "blue";
+        const fontSize = "16px";
+
+        const style = css`
+            .container{
+                color:${color}
+                font-size:${fontSize}
+            }
+        `;
+
+        console.log(style);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 일반함수 this 바인딩
+      // 일반 함수, 화살표 함수에 따라서 this의 바인딩이 달라짐
+      function a() {
+        "asdf";
+        console.log(this);
+      }
+      //a();
+
+      var a_value = 10; // var변수로 글로벌스코프에 변수를 선언
+      function func() {
+        console.log(this);
+        console.log(this.a_value);
+        console.log(window.a_value);
+
+        console.log(a_value);
+      }
+      //func();
+
+      // let과 const는 스크립트 스코프에 선언되기에
+      // 글로벌로 못 가져오니 스코프체이닝을 통해 함수에서 값을 가져온다?
+
+      let a_let = 10;
+      const a_const = 20;
+
+      function func2() {
+        "use strict";
+        // this.으로 시작하면 글로벌 스코프를 찾기 때문에 let, const는 값을 못읽음
+        // 그래서 스코프체이닝 (로컬에서 못찾으면 상위 스코프로 찾는데 스크립트 스코프가 존재하기 때문에 값을 읽는게 가능)
+        console.log(a_let);
+        console.log(a_const);
+      }
+      func2();
+
+      // 스코프체인 : 함수에서 어떤 값에 접근이 가능한가 불가능한가 판단하고 찾는 과정
+    </script>
+  </body>
+</html>
