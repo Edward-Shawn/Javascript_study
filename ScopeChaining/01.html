@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 스코프 체이닝 - 로컬 > 상위 스코프를 차례로 참조하며 변수 찾는것
+      // 참조를해도 찾는 변수가 없으면 참조 오류 (Reference error)가 발생함
+      var a_global = 10;
+      let a_script_let = 20;
+      const a_script_const = 30;
+
+      function a() {
+        var a_function = 40;
+        console.log({ a_global });
+        console.log({ a_script_let });
+        console.log({ a_script_const });
+        {
+          let b_block_let = 40;
+          const b_block_const = 20;
+          console.log();
+          console.log();
+        }
+        function b() {
+          console.log();
+          console.log();
+          console.log();
+        }
+        b();
+      }
+      //a();
+
+      // 스코프 체이닝은 언제 실행되는가?
+      {
+        const functions = new Array(5);
+        var i;
+        i = undefined;
+        for (i = 0; i < functions.length; i++) {
+          functions[i] = function () {
+            // 2. 그때 함수 실행 컨텍스트가 만들어지고 그 함수가 도달 할 수 있는
+            // 스코프 체인이 만들어 짐 그다음에 i값을 참조하는데 그 i값이 5
+            // var가 글로벌 변수인데 글로벌 스코프 체이닝을 통해서 i값을 찾음
+            console.log(i);
+          };
+        }
+
+        for (let j = 0; j < functions.length; j++) {
+          functions[j](); // 1. 함수를 실행하면 값은 5
+        }
+      }
+    </script>
+  </body>
+</html>

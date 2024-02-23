@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 재귀함수는 중복되는 함수 호출이 많아서 실행시간이 오래걸림
+
+      // fibonacci(n) 예제
+      {
+        function fib(n) {
+          if (n === 0) {
+            return 0;
+          }
+          if (n === 1) {
+            return 1;
+          }
+          return fib(n - 1) + fib(n - 2);
+        }
+
+        function timeTracking(n) {
+          console.time("time");
+          const result = fib(n);
+          console.log(`fib(${n}) = ${result}`);
+          console.timeEnd("time");
+        }
+
+        //timeTracking(20);
+      }
+
+      // 이럴때 해결가능한게 캐시도입임 > 메모이제이션
+      {
+        const cache = new Map(); // 오브젝트 객체처럼 키에 값을 할당할 수 있으며 오브젝트보다 빠르게 검색이 가능
+        // 캐시용으로 오브젝트 보다 맵을 많이 사용하며 중복된 값을 줄이는데 사용
+        function fib(n) {
+          if (cache.has(n)) {
+            return cache.get(n);
+          }
+          if (n === 0) {
+            return 0;
+          }
+          if (n === 1) {
+            return 1;
+          }
+          const result = fib(n - 1) + fib(n - 2);
+          cache.set(n, result);
+          return result;
+        }
+
+        function timeTracking(n) {
+          console.time("time");
+          const result = fib(n);
+          console.log(`fib(${n}) = ${result}`);
+          console.timeEnd("time");
+        }
+
+        //timeTracking(20);
+      }
+
+      // 그외에도 for루프, 행열을 사용해서 개선하는 방법이 있음
+      {
+        function fib(n) {
+          let a = 0;
+          let b = 1;
+          let temp = 0;
+          for (let i = 2; i <= n; i++) {
+            temp = a + b;
+            a = b;
+            b = temp;
+          }
+          return b;
+        }
+
+        function timeTracking(n) {
+          console.time("time");
+          const result = fib(n);
+          console.log(`fib(${n}) = ${result}`);
+          console.timeEnd("time");
+        }
+
+        timeTracking(20);
+      }
+
+      // 어떤 코드 실행에는 항상 시간이랑 메모리가 제한되어 있음 그래서 좋은 알고리즘은
+      // 이 두가지를 개선한 코드인것
+    </script>
+  </body>
+</html>
