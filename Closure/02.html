@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 클로저의 표현 방법과 파라미터
+      {
+        function outer(n) {
+          // 클로저는 외부 함수로 들어오는 파라미터 변수도 캡쳐가 가능함
+          const a = 10;
+          //   return function () {
+          //     // 함수 표현식으로도 클로저를 표현할 수 있음
+          //     return a * 20;
+          //   };
+          return () => {
+            // function대신 화살표 함수로도 가능
+            return a * n;
+          };
+        }
+
+        const f = outer(10); // 인자값으로 전달 가능
+        console.log(f()); // 만약 함수 f에 인자값을 주고 싶다면 내부함수 파라미터에 인자값을 주변 됨
+      }
+
+      // 클로저를 이용한 연산자
+      // 어떤 로직을 담아두고 필요할때 사용함
+      {
+        function makeOperator(operator, a) {
+          switch (operator.toLowerCase()) {
+            case "add":
+              return function (b) {
+                // add5의 인자값
+                return a + b;
+              };
+            case "sub":
+              return function (b) {
+                return a - b;
+              };
+            case "mul":
+              return function (b) {
+                return a * b;
+              };
+            case "div":
+              return function (b) {
+                return a / b;
+              };
+            default:
+              return function (b) {
+                console.log("what you want?");
+              };
+          }
+        }
+
+        const add5 = makeOperator("add", 5);
+        console.log(add5(10)); // makeOperator내부 함수에 인자값으로 10을 줌
+      }
+
+      // 클로저를 활용한 객체 팩토리 함수
+      {
+        function newPerson(name) {
+          let myName = name;
+          let myHobbies = [];
+
+          return {
+            getName: function () {
+              return myName;
+            },
+            addHobby: function (newHobby) {
+              myHobbies.push(newHobby);
+            },
+            greet: function () {
+              console.log(`hi my name is ${myName}`);
+              console.log(`i like play`);
+              console.log(myHobbies.join(", "));
+            },
+          };
+        }
+
+        const codingShawn = newPerson("codingShawn");
+        codingShawn.addHobby("soccer");
+        codingShawn.addHobby("minecraft");
+        codingShawn.greet();
+      }
+
+      {
+        function greeter(greet) {
+          greet();
+        }
+        function Person(name) {
+          this.myname = name;
+          const self = this;
+          this.greet = function () {
+            console.log(`hello, i'm ${self.myname}`);
+            // 현재 this가 스크립트 모드이기에 undefined 발생
+          };
+          // 해당 함수에 .bind(this)를 붙여주면 해결이 됨
+        }
+
+        const person = new Person("coding shawn");
+        // person.greet();
+        greeter(person.greet); // this.myname이 undefined 발생
+      }
+    </script>
+  </body>
+</html>

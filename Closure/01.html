@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 크로저 스코프
+      {
+        function outer() {
+          const a = 10;
+          function inner() {
+            console.log({ a }); // 해당 변수가 상위 스코프의 변수를 참조할때
+            // 상위 스코프에 대한 클로저 스코프를 생성함
+            // 내부함수가 상위스코프의 변수에 참조할때만 발생
+            // outer함수가 종료되어 실행컨텍스트가 메모리에서 정리되어도 a변수는
+            // 클로즈 스코프가 strong 참조로 캠쳐하고 있기 때문에 outer함수 스코프를 벗어나 살아 있을 수 있는 것임
+          }
+          inner();
+        }
+        outer();
+      }
+
+      // 클로저의 강력함은 이너함수가 아우터 함수 스코프 밖에서 실행 가능함
+      {
+        function outer() {
+          const a = 10;
+          function inner() {
+            console.log({ a });
+          }
+          return inner;
+        }
+        const f = outer();
+        f();
+      }
+
+      // 여러개의 클로즈 스코프를 갖는 함수
+      {
+        function a() {
+          function b() {
+            function c() {
+              console.log(c.name); // 함수 b의 내부함수 c의 객체에 접근
+            }
+            return c;
+          }
+          return b;
+        }
+
+        const inner_b = a();
+        const inner_c = inner_b();
+        inner_c();
+      }
+
+      // 상위의 변수 스코프가 글로벌이면 클로저를 만들지 않음 - 글로벌 스코프를 위한 클로저는 필요없음
+      // 클로저를 사용하느 이유는 outer함수의 스코프를 벗어나기 위해 사용됨
+      {
+        var a = 10;
+        function outer() {
+          function inner() {
+            return a * 10;
+          }
+        }
+        const f = outer();
+        f();
+      }
+
+      // 클로저는 내부 함수마다 만들어 지는것이 아닌 내부 함수의 상위 스코프마다 만들어짐
+      // 내부함수가 100개가 넘어가면 불필요한 메모리가 사용됨
+      {
+        var a = 10;
+        function outer() {
+          var b = 10;
+          function inner_a() {
+            // 내부함수의 상위 스코프(outer) 마다 클로저가 생성됨
+            // 그리고 글로벌 스코프를 위한 클로저 스코프는 생성하지 않음
+            // 이미 글로벌로 있기 때문에 굳이 클로저를 생성하지 않음
+            return a * 10;
+          }
+          function inner_b() {
+            return a * b * 10;
+          }
+          return [inner_a, inner_b];
+        }
+        const [fa, fb] = outer();
+        fa();
+        fb();
+      }
+    </script>
+  </body>
+</html>
