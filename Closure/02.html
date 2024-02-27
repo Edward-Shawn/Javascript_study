@@ -92,9 +92,14 @@
         }
         function Person(name) {
           this.myname = name;
-          const self = this;
+          console.log(this);
+          const self = this; // self라는 변수를 만들어서 this를 캡처함
+          // person에 대한 클로저가 생기고 그 안에 self라는 변수가 생성됨
+          // this는 Person을 가리키므로 Person 객체가 됨
+          //   console.log(self);
           this.greet = function () {
-            console.log(`hello, i'm ${self.myname}`);
+            console.log(this);
+            console.log(`hello, i'm ${this.name}`);
             // 현재 this가 스크립트 모드이기에 undefined 발생
           };
           // 해당 함수에 .bind(this)를 붙여주면 해결이 됨
@@ -103,6 +108,23 @@
         const person = new Person("coding shawn");
         // person.greet();
         greeter(person.greet); // this.myname이 undefined 발생
+      }
+
+      {
+        function greeter(greet) {
+          greet(); // 해당 함수가 독립적으로 호출되어 undefined로 나옴
+        }
+        function Person(name) {
+          this.myname = name;
+
+          this.greet = function () {
+            console.log(`hello, i'm ${this.name}`);
+          };
+        }
+
+        const person = new Person("coding shawn");
+
+        greeter(person.greet);
       }
     </script>
   </body>

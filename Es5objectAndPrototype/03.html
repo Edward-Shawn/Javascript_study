@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // prototype - 여러 객체의 인스턴스를 위한 틀
+      // 공통되는 속성, 메서드를 여러객체 인스턴스와 효율적으로 공유하기 위해서임
+      // js의 모든 객체는 프로토 타입 슬롯을 가지고 있음 (스크립트 스코프)
+      // 슬롯은 객체의 프로토 타입을 가리킨다
+
+      const person = {
+        myname: "codingMax",
+      };
+      //console.log(person.myname);
+      person.hasOwnProperty("myname");
+      // hasOwnProperty메서드를 person객체에 정의하지 않았지만
+      // person의 프로토타입인 object객체가 hasOwnProperty메서드를 제공해줘서 가능했던것
+
+      // 어떤 객체의 프로토타입도 객체임 그리고 그것을 이용해서 다른 객체로 설정하는것도 가능함
+      // 그렇게 해서 여러 객체간의 프로토타입 체인을 만들 수 있음 - 객체 지행의 상속을 구현하는 방법
+
+      {
+        const prototype = { myname: "shawn" };
+        const person1 = Object.create(prototype);
+
+        const proto2 = Object.getPrototypeOf(person1);
+        console.log("proto2 =>", proto2);
+        const proto1 = Object.getPrototypeOf(proto2);
+        console.log("proto1 =>", proto1);
+        const protoRoot = Object.getPrototypeOf(proto1);
+        console.log("protoRoot =>", protoRoot); // 해당값이 있는지 프로토 타입 체인으로 가서 속성을 찾고 없으면 null을 반환ㄴ
+        // 위의 값을이 프로토타입 체인임
+
+        console.log("check =>", person1.myname); // 객체의 속성 접근법으로 프로토 타입 체인을 타면서 myname값이 있으니까 해당 값을 보여줌
+        console.log("check =>", person1.age); // age이라는 프로토타입을 찾음 > 없음 > 상위 프로토 타입으로 감 > 최종적으로 없기때문에 null이 반영됨
+        console.log("check =>", person1.myname);
+      }
+      // 객체 자신의 속성을 자신에서만 찾는게 아니라 프로토 타입 체인을 타면서 객체의 속성을 찾게됨
+
+      // 객체를 조사해서 어디까지 프토로타입 체인이 어디까지 이어지는지도 체크해볼것
+      // 타입값을 체크할때 프토로타입 체인으로 가서 속성을 찾고 없으면 상위 프토로타입 체인으로 가서 찾음
+
+      // *혼동 금지 --  스코프 체인 변수의 아이덴티파이어 , 프로토타입 체인은 객체의 속성을 찾아가는 과정 *
+    </script>
+  </body>
+</html>

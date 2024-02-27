@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      {
+        function greeter(greet) {
+          // 함수의 인터페이스만을 통해서 객체의 메서드에 전달해서 사용하는 경우가 종종 있음
+          // 해당 함수는 독립적으로 실행된것임 그래서 해상함수의 주체가 없어서 this를 전역 객체에 바인딩함
+          // 전역 객체에는 this가 가리키는게 명확하지 않기때문에 undifined가 뜸
+          greet(); // Person 내부의 greet함수가 독립적으로 호출됨
+        }
+        function Person(name) {
+          this.myname = name; // 여기의 this와
+          // 여기는 Person의 this
+          const self = this; // 변수를 this를 강제로 지정해서 사용하는 방법과
+          this.greet = function () {
+            // 일반함수를 화살표 함수로 지정해서 사용하는 방법이 있음 (클로저를 활용한 방법)
+            // 클로저는 상위 스코프에 변수를 참조
+            // 여기는 window의 this
+            console.log(`hello, i'm ${self.myname}`); // 여기의 this가 서로 다름
+          };
+        }
+
+        const person = new Person("coding shawn"); // 생성자 함수를 이용해서 변수에 담음
+
+        greeter(person.greet); // Person 내부의 greet함수가 독립적으로 호출됨
+      }
+
+      {
+        function Person(name) {
+          this.myname = name; // this는 person
+
+          this.greet = function () {
+            console.log(`hello, i'm ${this.myname}`); // 여기도 this는 person
+          };
+        }
+
+        const person = new Person("coding shawn");
+
+        // person.greet();
+      }
+    </script>
+  </body>
+</html>

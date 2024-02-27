@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Object.create 와 프로토타입
+
+      {
+        const prototy = {
+          specise: "human",
+          constructor: function (name) {
+            this.name = name;
+            return this;
+          },
+          greet: function () {
+            console.log(`hello im ${this.name}`);
+          },
+        };
+        // const p1 = Object.create(prototy);
+
+        //console.log(p1);
+        //console.log(p1.name);
+        // p1은 prototy객체를 뜻하는데 왜 이 객체에 존재하는 name를 찾을 수 없는가?
+
+        const p1 = Object.create(prototy).constructor("codingShawn");
+        // name속성을 찾을 수 없을때 constructor메서드를 호출하고 인자값을 따뤄 주면됨
+        // Prototype 체인을 확인해보면 constructor에서 만들어 둔 this.name이 속성에 없음
+      }
+
+      // 생성자 함수의 constructor와 new연산자
+      {
+        // js의 함수도 객체임 그러기때문에 함수도 Prototype을 가지고 있음
+
+        // 함수에서 Prototype은 중요한 역할을 함 왜냐면 new연산자와도 관련이 있기 때문
+        const a_obj = {}; // Prototype 체인을 확인해보면 객체가 있음
+        function a_func() {}
+        const a_func_obj = new a_func(); // new연산자는 Prototype 체인을 확인해보면 생성자 함수가 있음
+        //console.log("");
+        // 일반 객체와 생성자 함수는 Prototype체인에서 차이가 있음 그 차이는 new연산자에 있음
+        a_func.prototype === a_func_obj.__proto__; // 결과 값이 true
+        // a_func_obj객체의 Prototype이 a_func의 Prototype속성이라는 것을 알 수있음
+        // a_func함수가 new연산자와 함께 사용가능한것은 Prototype에 생성자 함수 객체르 가지고 있기 때문
+        // 그리고 new 연산자는 생성자 함수를 사용하기 때문임
+      }
+    </script>
+  </body>
+</html>
