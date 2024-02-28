@@ -17,7 +17,7 @@
       //  Person이라는 함수 객체가 Prototype체인이라는 생성자 함수를 가지고 있기 때문임
       console.log(p1);
       // Person {}
-      p1.__proto__ === Person.prototype; // true
+      p1.__proto__ === Person.prototype; // true   __proto__는 [[Prototype]]과 같음
 
       // new 연산자를 사용하지 않고 동일하게 제작할 경우
 
@@ -54,6 +54,14 @@
       };
 
       p4.info();
+      // 예시로 추가했던 info와 greet의 메서드를 호출하는 방법이고
+      // p4를 열어보면 프로토타입 체인안에 속성이 있음
+      // 체인은 Person 객체부터 접근하는데 name밖에 없으므로 그다음 프로토타입 객체로 넘어가서 찾게됨
+      // 거기에 info, greet가 생성되어 있음
+
+      // new연산자가 하는일은 빈 객체를 만들고 > 생성자 함수에 프로토타입속성에 생성자객체를 호출
+      // 그때 this바인딩을 새로운 객체를 호출하고 필요한 인자를 전달함
+      // new연산자가 생성자함수와 같이 사용되면서 어떻게 객체를 만드는지 파악
     </script>
   </body>
 </html>
