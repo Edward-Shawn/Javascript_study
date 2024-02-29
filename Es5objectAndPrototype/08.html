@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Person(name) {
+        this.name = name;
+      }
+
+      function Employee(name, job) {
+        Person.call(this, name);
+        this.job = job;
+      }
+
+      Person.prototype.greet = function () {
+        console.log(`hello im ${this.name}`);
+      };
+
+      Employee.prototype.introJob = function () {
+        //
+        console.log(`i work at ${this.job}`);
+      };
+
+      Employee.prototype = Object.create(Person.prototype);
+      Employee.prototype.constructor = Employee;
+
+      const e = new Employee("codingShawn", "google");
+
+      e.greet();
+
+      // instanceof 연산자
+      // a객체가 b타입의 인스턴스인가 조사하는것
+      console.log(e instanceof Person); // ture - e객체가 Person을 상속 받았기 때문
+
+      console.log(e instanceof Employee); // 체크하는 내용은 a가 b에 constructor의 함수를 가지고 있는지 확인
+      console.log("Object", e instanceof Object);
+      // 자바스크립트에서 모든 객체는 Object객체를 상속 받음
+    </script>
+  </body>
+</html>

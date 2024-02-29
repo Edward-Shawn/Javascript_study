@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // typeof연산자
+      console.log(typeof []); // 배열이지만 object가 나옴
+      function Person() {
+        this.name = "shawn";
+      }
+
+      const p1 = new Person(); // 커스텀 객체일때도 object가 나옴
+      console.log(typeof p1);
+
+      // prototype과 constructor를 이용해서 좀더 정확한 타입 검사가 가능함
+      console.log(Object.prototype.toString.call(1));
+      console.log(Object.prototype.toString.call("1"));
+      console.log(Object.prototype.toString.call(true));
+      console.log(Object.prototype.toString.call(new String("string")));
+      console.log(Object.prototype.toString.call(() => {}));
+      console.log(Object.prototype.toString.call([]));
+
+      // 하지만 이렇게 작업을 해줘도 커스텀 객체는 Object로 나옴
+      console.log(Object.prototype.toString.call(p1));
+
+      // 그래서 함수를 제작해서 값을 추출 후 정규 표현식을 이용하여 변환해서 출력
+      function getTypeOf(value) {
+        const strType = Object.prototype.toString.call(value);
+        const extractedType = strType.replace(/^\[object (.+)\]$/, "$1");
+        if (extractedType !== "Object") {
+          return extractedType;
+        }
+        return value.constructor && value.constructor.name
+          ? value.constructor.name
+          : extractedType;
+      }
+      console.log(getTypeOf(p1)); // 어떤 객체인지 파악이 가능
+      // 어떤 값을 체크할때 typeof연산자보다 좀더 명확해야한다면 getTypeOf처럼 커스텀 함수를 만들 수 있음
+      // 실제 프로젝트에 어떤 함수의 인자값에 대한 타입을 검사하는일이 많음
+    </script>
+  </body>
+</html>
