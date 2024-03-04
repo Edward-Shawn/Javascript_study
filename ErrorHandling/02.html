@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 에러 객체
+      // 에러중에 개발자가 해결하기 어려운 문제가 존재함 (메모리 할당, 레인지 에러)
+      // OutOfMemory
+
+      // new Array(1024 * 1024 *1024 *1024); js는 배열을 크게 할당하는것을 방지하기 위해
+      // RangeError를 발생시킴
+
+      // 또는 탈출조건이 없는 재귀함수를 만들시 Maximum call stack에러가 발생함
+      // 이 경우에도 RangeError가 발생함
+      //   function a(params) {
+      //     a();
+      //   }
+      //   a();
+
+      // 위의 RangeError가 발생하는 에러는 적절하게 처리 또는 프로그램 실행 유지가 불가능함
+
+      // js는 모든 오류, 예외들을 에러객체로 표현함
+
+      // 에러 발생시 항상 Uncaught가 맨 앞에 붙는데 이 뜻은 처리되지 않은 이라는 뜻임
+      // 처리되지 않은 에러이기 때문에 에러처리 작업이 필요함
+    </script>
+  </body>
+</html>

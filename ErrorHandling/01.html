@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 에러 처리 로직
+      // 프로그램 동작중 사용자 에러로 인해서 생기는 문제를 처리하지 않으면
+      // 비정상적으로 종료되는 문제가 생길 수 있음
+      // 오류가 발생시 후처리로 오류를 잘 처리해주는게 굉장히 중요함 > 오류 처리가 잘되면 신뢰성이 증가
+      function program() {
+        console.log("program start");
+        // js에서는 오류 발생시 try & catch를 이용해서 오류를 잡을 수 있음
+        do {
+          try {
+            const inputA = window.prompt(
+              "a 값을 숫자로 입력하세요. (종료하려면 exit입력)"
+            );
+            if (inputA === "exit") {
+              break;
+            }
+            const inputB = window.prompt("b값을 숫자로 입력하세요.");
+            const inputLogic = window.prompt(
+              "변수명 a, b를 사용하여 계산 로직을 입력해 주세요"
+            );
+            // isValidLogic 로직을 통해 사용자가 잘못 입력한 값에 대한 오류처리를 미리함
+            // const isValidLogic =
+            //   inputLogic
+            //     .split(/[\s\+\-\*\/]/)
+            //     .filter((varName) => varName !== "a" && varName !== "b")
+            //     .join("")
+            //     .trim() === "";
+            // if (!isValidLogic) {
+            //   window.alert(
+            //     "계산 로직에 변수명 a, b가 없습니다. 다시 입력해 주세요"
+            //   );
+            //   continue;
+            // }
+            const operation = new Function("a", "b", `return ${inputLogic}`);
+            const result = operation(parseInt(inputA), parseInt(inputB));
+            const output = `프로그램 실행 결과는 ${result} 입니다.`;
+            console.log(output);
+          } catch (error) {
+            window.alert(`${error.messages} 오류 발생`);
+            continue;
+          } // 실행중 오류 발생시 catch문으로 오류가 전달됨
+        } while (true);
+        console.log("프로그램 종료");
+      }
+      program();
+    </script>
+  </body>
+</html>
