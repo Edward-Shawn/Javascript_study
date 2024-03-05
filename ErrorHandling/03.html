@@ -20,6 +20,64 @@
       } finally {
         // 항상 실행되는 블럭
       }
+
+      //   {
+      //     function a() {
+      //       b();
+      //     }
+      //     function b() {
+      //       c();
+      //     }
+      //     function c() {
+      //       throw new Error("오류발생"); // 여기서 생긴 오류를
+      //     }
+
+      //     try {
+      //       a();
+      //     } catch (error) {
+      //       // catch를 통해 오류처리 로직 구현
+      //       console.log("전역 실행컨텍스트에서 오류를 캐치해서 처리했습니다");
+      //       console.log(`${error.name} :: ${error.name}`);
+      //     } finally {
+      //       console.log("항상 실행됩니다.");
+      //     }
+      //   }
+
+      {
+        function a() {
+          try {
+            b();
+          } catch (error) {
+            // catch를 통해 오류처리 로직 구현
+            // catch를 통해 핸들링이 된 에러는 사라짐
+            console.log(
+              "a함수에서 실행컨텍스트에서 오류를 캐치해서 처리했습니다"
+            );
+            console.log(`${error.name} :: ${error.name}`);
+            // a함수의 try에서 핸들링이 되어 종료된 에러는 전역실행 컨택스트에서 다시 필요할 수 있는데
+            // catch에서 받은 오류 메시지를 throw통해 다시 던질 수 있음
+            throw error;
+          } finally {
+            console.log("항상 실행됩니다.");
+          }
+        }
+        function b() {
+          c();
+        }
+        function c() {
+          throw new Error("오류발생"); // 범용적인 에러 객체
+        }
+
+        // 전역실행 컨택스트
+        try {
+          a();
+        } catch (error) {
+          console.log("전역 실행컨텍스트에서 오류를 캐치해서 처리했습니다");
+          console.log(`${error.name} :: ${error.name}`);
+        } finally {
+          console.log("항상 실행됩니다.");
+        }
+      }
     </script>
   </body>
 </html>

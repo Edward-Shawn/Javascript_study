@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 사용자 정의 오류처리
+
+      // 함수가 유효하지 않을때 사용할 코드
+      // 커스텀 객체의 네이밍도 중요한데 이름만 봐도 어떤 에러를 표시하는지 파악이 가능하게 작성해야함
+      class InvalidArgumentError extends Error {
+        // Error메시지 상속
+        constructor(message, argumentValue) {
+          // 생성자에서 인자값을 받음
+          // Error객체를 상속받기 때문에 Error객체의 생성자 함수를 상속 받아야함
+          super(message);
+          this.name = this.constructor.name;
+          this.argumentValue = argumentValue;
+        }
+      }
+
+      function div(a, b) {
+        if (typeof a !== "number") {
+          throw new TypeError("a값은 숫자여야 합니다");
+        }
+        if (typeof b !== "number") {
+          throw new TypeError("b값은 숫자여야 합니다");
+        }
+        if (b === 0) {
+          throw new InvalidArgumentError("b값은 0이 될 수 없습니다", b);
+        }
+        return a / b;
+      }
+
+      div("hello", 0);
+
+      // 던져진 오류객체는 호출 스텍에 따라 계속 전파됨
+      // 오류객체를 잡아서 해결하는 try catch문을 만들어서 처리 될때까지
+    </script>
+  </body>
+</html>

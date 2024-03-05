@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 동기 비동기 sync & Async
+      // 블로킹은 언제 문제가 되나? 블로킹의 실행시간이 매우 길띠
+
+      // 비동기는 하나의 Thread에서 처리하는게 아니고 주어진 일을 다른 Thread(백그라운드 스레드)에게
+      // 위임을 해서 처리하게 함 그래서 동시에 일을 처리하는게 가능
+
+      // 블로킹 예시
+      function delay(duration_ms) {
+        const delayUntil = Date.now() + duration_ms;
+        while (Date.now() < delayUntil) {}
+        console.log(`${duration_ms}동안 delay했습니다`);
+      }
+
+      delay(1000);
+
+      // 매우 긴 시간동안 블로킹을 할 경우
+      // delay(10 * 60 * 1000)
+
+      // 처리시간이 늘어나고 메인 스레드나 ui스레드를 블로킹이 하면서
+      // 웹 창의 무반응, 무한 로딩이 현상이 발생함
+
+      // 해결방법은 메인 스레드에 블로킹이 되는 작업을 논블로킹 작업으로 만들면 됨 - 멀티 스레드 사용
+
+      // 근데 자바스크립트는 싱글 스레드임 멀티 스레드를 지원하지 않음
+    </script>
+  </body>
+</html>
