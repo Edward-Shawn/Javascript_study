@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const num = [1, 2, 3, 4];
+
+      let resultArray = [];
+      let sum = 0;
+      for (let i = 0; i < num.length; i++) {
+        // console.log(num[i]);
+        for (let j = 0; j < num[i]; j++) {
+          // num[i] 요소의 인덱스에 숫자 값만큼 루프를 돔
+          sum += 1;
+
+          console.log("내부", j, "그리고 sum", sum); // 2, 3 ,4 횟수 증가
+        }
+        console.log(" ------------", sum); // 첫번째 for문은 4번 반복
+
+        // sum = 0;
+        resultArray.push(sum);
+      }
+      console.log(resultArray);
+    </script>
+  </body>
+</html>

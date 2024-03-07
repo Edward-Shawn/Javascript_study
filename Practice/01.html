@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   const testText = "car";
+      //   console.log(testText.split("").reverse().join(""));
+
+      const nums = [3, 1, 2, 10, 1];
+
+      let resultArray = [];
+      let sum = 0;
+
+      // for (let i = 0; i < nums.length; i++) {
+      //   for (let j = 0; j <= i; j++) {
+      //     sum += nums[j];
+      //     console.log(sum);
+      //   }
+      //   resultArray.push(sum);
+      //   sum = 0;
+      // }
+
+      //   for (let j = 0; j < nums.length; j++) {
+      //     sum += nums[j];
+      //     // console.log(sum);
+      //     resultArray.push(sum);
+      //   }
+
+      for (let j = 0; j < nums.length; j++) {
+        resultArray.push((resultArray[resultArray.length - 1] || 0) + nums[j]);
+      }
+
+      sum = 0;
+
+      //console.log("resultArray", resultArray);
+
+      {
+        let num = [1, 2, 3, 4];
+        function test(nums) {
+          const runningSum = [nums[0]];
+          for (let i = 1; i < nums.length; i++) {
+            runningSum[i] = runningSum[i - 1] + nums[i];
+          }
+          console.log(runningSum);
+        }
+
+        test(num);
+      }
+    </script>
+  </body>
+</html>
