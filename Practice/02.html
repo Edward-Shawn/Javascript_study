@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 열 최대, 행 최소
+      testMatrix = [
+        [3, 7, 8],
+        [9, 11, 13],
+        [15, 16, 17], // 열 최대, 행 최소 = 15
+      ];
+
+      let d = [
+        [7, 8],
+        [1, 2],
+      ];
+
+      let c = [
+        [3, 6],
+        [7, 1],
+        [5, 2],
+        [4, 8],
+      ];
+
+      // testMatrix = [1, 2, 3];
+
+      function luckyNumbers(matrix) {
+        let resultArray = [];
+        let sum = 0;
+
+        for (let i = 0; i < matrix.length; i++) {
+          // 각 배열 요소의 합산
+
+          console.log(matrix[i]);
+          // 일단 구해야하는게 제일 큰 값을 가지고 있는 matrix[i]
+          // 그리고 그 배열에서 가장 작은 값
+
+          for (let j = 0; j < matrix[i].length; j++) {
+            // console.log("inner", matrix[i][j]);
+            sum += matrix[i][j];
+            console.log("j sum", matrix[i][j]);
+          }
+          console.log("sum -------- ", sum);
+          resultArray.push(sum);
+          sum = 0;
+        }
+
+        // 메서드 함수 사용보다는 가급적 if문을 작성해서 조건식을 만들어 사용할것
+        const findMaxNum = Math.max(...resultArray);
+        const findMaxIndex = resultArray.indexOf(findMaxNum);
+        const findMinNum = Math.min(...matrix[findMaxIndex]);
+
+        console.log(findMinNum);
+      }
+      luckyNumbers(testMatrix);
+    </script>
+  </body>
+</html>

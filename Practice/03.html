@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Remove Duplicates from Sorted List
+      let arrayHead = [1, 2, 3, 3, 4, 4, 5];
+      function deleteDuplicates(head) {
+        let resultArray = [];
+        for (let i = 0; i < head.length; i++) {
+          if (!resultArray.includes(head[i])) {
+            resultArray.push(head[i]);
+          }
+        }
+
+        return resultArray;
+      }
+
+      deleteDuplicates(arrayHead);
+
+      // let arrayHead = [1, 2, 3, 3, 4, 4, 5];
+      // const deleteDuplicates = (head) => {
+      //   const count = {};
+      //   const dummy = { next: head };
+      //   for (let cur = head; cur; cur = cur.next) {
+      //     count[cur.val] = (count[cur.val] || 0) + 1;
+      //   }
+      //   for (let cur = dummy; cur.next; ) {
+      //     count[cur.next.val] > 1
+      //       ? (cur.next = cur.next.next)
+      //       : (cur = cur.next);
+      //   }
+
+      //   return dummy.next;
+      // };
+
+      // deleteDuplicates(arrayHead);
+    </script>
+  </body>
+</html>
