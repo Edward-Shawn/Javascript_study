@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Remove Element
+
+      let nums = [3, 2, 2, 3];
+      let val = 3;
+
+      function removeElement(nums, val) {
+        let resultNum = 0;
+
+        for (let i = 0; i < nums.length; i++) {
+          if (nums[i] !== val) {
+            // 값 불일치 체크 2번만 반복됨
+            // i; // i는 조건으로 걸러진 인덱스 1, 2
+
+            // val값 3과 nums의 값 2의 불일치 조건
+            nums[resultNum] = nums[i]; // nums[i]는 조건으로 걸러진 2, 2의 값임
+            resultNum++;
+          }
+        }
+
+        return resultNum;
+      }
+      console.log(nums);
+      removeElement(nums, val);
+
+      //   let resultArray = nums;
+      //     for (let i = 0; i < nums.length; i++) {
+      //       if (nums[i] == val) {
+      //         null;
+      //       } else {
+      //         resultArray.push(nums[i]);
+      //       }
+      //     }
+      //     return resultArray.length;
+    </script>
+  </body>
+</html>

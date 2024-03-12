@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Remove Duplicates from Sorted List
+      let arrayHead = [1, 1, 2];
+
+      function deleteDuplicates(head) {
+        let curr = head;
+
+        while (curr != null && curr.next != null) {
+          if (curr.val == curr.next.val) {
+            // 이전값과 다음 값이 같을 경우 다음 다음 값으로 넘어감
+            curr.next = curr.next.next;
+          } else {
+            curr = curr.next;
+          }
+        }
+        console.log("curr", curr);
+        console.log("head", head);
+        return head;
+      }
+
+      function generateArrayToListNode(array) {
+        let head = null;
+
+        for (let i = array.length - 1; i >= 0; i--) {
+          head = {
+            val: array[i],
+            next: head,
+          };
+        }
+
+        return head;
+      }
+
+      deleteDuplicates(generateArrayToListNode(arrayHead));
+    </script>
+  </body>
+</html>
