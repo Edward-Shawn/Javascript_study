@@ -17,18 +17,36 @@
 
         for (let i = 0; i < nums.length; i++) {
           if (nums[i] !== val) {
-            // 값 불일치 체크 2번만 반복됨
-            // i; // i는 조건으로 걸러진 인덱스 1, 2
-
-            // val값 3과 nums의 값 2의 불일치 조건
-            nums[resultNum] = nums[i]; // nums[i]는 조건으로 걸러진 2, 2의 값임
+            // console.log("if", i, resultNum, nums[resultNum]);
+            console.log("nums[i]", nums[i], i);
+            // nums[resultNum] = nums[i];
+            console.log("nums[resultNum]", nums[resultNum]);
+            // 1, 2의 인덱스 값인 nums값 2,2를 nums[resultNum (0, 1)]값인 3, 2에 넣음
+            // 그래서 [2, 2, 2, 3]이 나옴
             resultNum++;
           }
+
+          //   if (nums[i] !== val) {
+          //     // 값 불일치 체크 2번만 반복됨
+          //     // i; // i는 조건으로 걸러진 인덱스 1, 2
+          //     // val값 3과 nums의 값 2의 불일치 조건
+          //     nums[resultNum] = nums[i]; // nums[i]는 조건으로 걸러진 2, 2의 값임
+          //     console.log(
+          //       "nums[resultNum] : ",
+          //       nums[resultNum],
+          //       resultNum,
+          //       i,
+          //       "nums[i]",
+          //       nums[i]
+          //     );
+          //     resultNum++; // 결과값 1, 2
+          //   }
         }
+        // console.log("nums[resultNum]", nums[resultNum]);
 
         return resultNum;
       }
-      console.log(nums);
+
       removeElement(nums, val);
 
       //   let resultArray = nums;
