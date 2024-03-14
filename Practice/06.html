@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // test
+
+      // 원본배열 nums를 중복제거해서 출력하고
+      // 변수를 새로 만들어서 중복제거한 배열을 리턴해라
+      let nums = [1, 1, 2];
+      function removeDuplicates(nums) {
+        // nums.splice(1, 1); // 배열 중복 임으로 제거하고 수정
+        // return nums.length; // 수정된 배열 길이 반영
+
+        // 힌트는 초기화 식, 순회 for문 두가지이다
+
+        let sum = 0;
+        // 배열 순회
+        for (let i = 0; i < nums.length; i++) {
+          // console.log(sum); // sum의 증가식이 없으니 0만 3번나옴
+          // console.log(i); // 0 1 2
+          //nums[i] 1, 1, 2
+          //nums[sum] 1만 나옴 sum에 증가식이 없어서
+          console.log("nums[i], nums[sum]", nums[i], nums[sum]);
+
+          if (nums[i] != nums[sum]) {
+            // 둘다 마지막 인덱스 i : 2 , j : 1에서 값 불일치 조건이 발동
+            // nums[++j] : 1 을 조건식을 통해 나온값 [i] : 2로 대체를 함
+            console.log("불일치", sum); // 지금 인덱스가 0임
+            nums[++sum] = nums[i]; // 여기서 sum의 인덱스를 ++sum으로 1이라는 값으로 만듬
+            // nums[++sum] : 1의 값을 불일치로 나온 nums[i] : 2로 수정함
+          }
+        }
+        console.log("end", nums);
+
+        return ++sum;
+      }
+
+      removeDuplicates(nums);
+    </script>
+  </body>
+</html>
