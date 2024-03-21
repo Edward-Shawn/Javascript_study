@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Two Sum
+      // nums = [2,7,11,15], target = 9
+      let nums = [3, 2, 4];
+      let target = 6;
+
+      //nums배열에서 target의 값을 합산해서 맞출 수 있는 value값의 인덱스 찾기
+      function twoSum(nums, target) {
+        let resultArray = [];
+        for (let i = 0; i < nums.length; i++) {
+          for (let j = i + 1; j < nums.length; j++) {
+            if (nums[i] + nums[j] == target) {
+              resultArray.push(i, j);
+            }
+          }
+        }
+        return resultArray;
+      }
+
+      twoSum(nums, target);
+    </script>
+  </body>
+</html>
