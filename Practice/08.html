@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // plus one
+      //   let digits = [6, 1, 4, 5, 3, 9, 0, 1, 9, 5, 1, 8, 6, 7, 0, 5, 5, 4, 3];
+
+      //   function plusOne(digits) {
+      //     let testsum = Number(digits.join(""));
+      //     console.log(testsum);
+      //     let convert = testsum + 1;
+
+      //     let resultNum = Array.from(convert.toString()).map(Number);
+      //     // 배열 합산
+      //     // 합산된 숫자에서 + 1
+      //     // +1한 숫자를 배열로 쪼개기
+
+      //     return resultNum;
+      //   }
+
+      //   plusOne(digits);
+
+      let digits = [9, 9];
+
+      function plusOne(digits) {
+        if (digits.length == 1) {
+          digits = Array.from(digits.toString()).map(Number);
+        } else {
+          for (let i = 0; i < digits.length; i++) {
+            if (digits[i] == digits[digits.length - 1]) {
+              digits[i] = digits[i] + 1;
+            }
+          }
+        }
+        console.log(digits);
+        return digits;
+      }
+
+      plusOne(digits);
+    </script>
+  </body>
+</html>
