@@ -25,23 +25,55 @@
 
       //   plusOne(digits);
 
-      let digits = [9, 9];
+      //   let digits = [1, 2];
+      //   let digits = [6, 1, 4, 5, 3, 9, 0, 1, 9, 5, 1, 8, 6, 7, 0, 5, 5, 4, 3];
+      let digits = [9, 9, 9, 9, 9];
+
+      // 순방향으로 계산하면 안됨 
+      // 역방향으로 불러와서 더해야함
 
       function plusOne(digits) {
-        if (digits.length == 1) {
-          digits = Array.from(digits.toString()).map(Number);
-        } else {
-          for (let i = 0; i < digits.length; i++) {
-            if (digits[i] == digits[digits.length - 1]) {
-              digits[i] = digits[i] + 1;
-            }
+        // let testNum = "";
+        // let testsum = Number(digits.join(""));
+
+        let isRound = 1;
+        for (let i = digits.length - 1; i >= 0; i--) {
+          if (isRound) {
+            digits[i] = digits[i] + 1;
+            isRound = 0;
+          } else {
+            break;
+          }
+
+          // 9999 의값이 나올경우 10의 값이 나오면 0으로 초기화해주고
+          if (digits[i] >= 10) {
+            digits[i] = digits[i] - 10;
+            isRound = 1;
           }
         }
-        console.log(digits);
+
+        // 9999가 0이되고 맨앞에 1을 더해서 발생한 반올림 1을 값 앞에 넣음
+        if (isRound) { 
+          return [1].concat(digits);
+        }
+
+        return digits;
+
+        // for (let i = 0; i < digits.length; i++) {
+        //   console.log(digits[i]);
+        //   if (digits[i] == digits[digits.length - 1]) {
+        //     digits[i] = digits[i] + 1;
+        //   }
+        // }
+        // if (digits.length == 1) {
+        //   digits = Array.from(digits.toString()).map(Number);
+        // }
+        // console.log(testNum);
         return digits;
       }
 
-      plusOne(digits);
+      console.log(plusOne(digits));
+      //   plusOne(digits);
     </script>
   </body>
 </html>
