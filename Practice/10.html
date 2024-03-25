@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Search Insert Position
+      let nums = [3, 6, 7, 8, 10];
+      let target = 5;
+
+      var searchInsert = function (nums, target) {
+        // 근접 인덱스
+        // 배열 안에 비슷한 값이 있으면 +1
+        // 배열 안에 비슷한 값이 없으면 제일 큰 인덱스
+
+        if (nums.includes(target)) {
+          return nums.indexOf(target);
+        }
+        let overSum = 0;
+        for (let i = 0; i < nums.length; i++) {
+          if (nums[i] == target + 1) {
+            return i;
+          }
+          if (nums[i] == target - 1) {
+            return i + 1;
+          }
+          if (target < nums[i]) {
+            return 0;
+          }
+          overSum = nums[i];
+        }
+
+        if (overSum < target) {
+          return nums.length;
+        }
+      };
+      console.log(searchInsert(nums, target));
+      searchInsert(nums, target);
+    </script>
+  </body>
+</html>
