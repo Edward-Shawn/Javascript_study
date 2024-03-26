@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Contains Duplicate
+      let nums = [1, 2, 3, 1];
+
+      function containsDuplicate(nums) {
+        let set = new Set(nums);
+
+        return nums.length !== set.size;
+      }
+
+      containsDuplicate(nums);
+    </script>
+  </body>
+</html>
