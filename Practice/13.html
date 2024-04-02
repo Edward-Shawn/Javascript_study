@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //asdf
+      let s = "()";
+      function isValid(s) {
+        let resultValue = [],
+          cnt = 0;
+        for (let i of s) {
+          console.log(s[0]);
+          if (i === s[0]) {
+            resultValue.push(i);
+            cnt++;
+          } else {
+            resultValue.pop();
+            cnt--;
+          }
+        }
+        console.log(cnt);
+        if (cnt) {
+          return false;
+        }
+
+        return true;
+      }
+      isValid(s);
+
+      // 스택방식 사용
+      // 0, 1 순서로 넣고 1, 0순서로 다시 꺼내서 볼때 0의 값이 일치하는지 확인
+    </script>
+  </body>
+</html>
