@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Longest Common Prefix
+      let strs = ["flower", "flow", "flight"];
+      function longestCommonPrefix(strs) {
+        // 0번째랑 나머지랑 비교해보기
+
+        for (let i = 0; i < strs[0].length; i++) {
+          for (let s of strs) {
+            if (s[i] !== strs[0][i]) {
+              return s.slice(0, i);
+            }
+          }
+        }
+      }
+
+      longestCommonPrefix(strs);
+    </script>
+  </body>
+</html>
