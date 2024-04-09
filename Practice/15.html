@@ -8,32 +8,21 @@
   <body>
     <script>
       // binary
-      //   let root = [1, null, 2, 3];
-
-      function TreeNode(val, left, right) {
-        this.val = val === undefined ? 0 : val;
-        this.left = left === undefined ? null : left;
-        this.right = right === undefined ? null : right;
-      }
-
-      let root = new TreeNode(1, null, new TreeNode(2, new TreeNode(3), null));
+      let root = [1, null, 2, 3];
 
       function preorderTraversal(root) {
-        const stack = [];
-        const res = [];
-
-        while (root || stack.length) {
-          if (root) {
-            stack.push(root);
-            root = root.left;
-          } else {
-            root = stack.pop();
-            res.push(root.val);
-            root = root.right;
+        let result = [];
+        if (root) {
+          for (let i = 0; i < root.length; i++) {
+            if (root[i] === null) {
+              console.log("asdf");
+            } else {
+              result.push(root[i]);
+            }
           }
         }
-        console.log(res);
-        return res;
+
+        return result;
       }
       preorderTraversal(root);
     </script>
