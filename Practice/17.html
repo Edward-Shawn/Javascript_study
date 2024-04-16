@@ -7,26 +7,29 @@
   </head>
   <body>
     <script>
-      // Remove Linked List Elements
-      let nums1 = [1, 2, 3, 0, 0, 0];
-      let nums2 = [2, 5, 6];
-      let m = 3;
+      // Merge Sorted Array
+      let nums1 = [-1, 0, 0, 3, 3, 3, 0, 0, 0];
+      let nums2 = [1, 2, 2];
+      let m = 6;
       let n = 3;
 
       function relativeSortArray(nums1, m, nums2, n) {
-        // shift 먼저하고
-        // 그다음에 push
-
-        for (let i = nums1.length - 1; i - 3 >= 0; i--) {
-          nums1.pop();
+        for (let i = 0; i < nums1.length; i++) {
+          if (i >= m) {
+            nums1.splice(i);
+          }
         }
+
         for (let i = 0; i < nums2.length; i++) {
           nums1.push(nums2[i]);
         }
+
+        return nums1.sort(function (a, b) {
+          return a - b;
+        });
       }
 
       relativeSortArray(nums1, m, nums2, n);
-      console.log(nums1);
     </script>
   </body>
 </html>
