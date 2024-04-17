@@ -8,22 +8,51 @@
   <body>
     <script>
       // object or array isEmpty?
-      let obj = {};
+      //   let obj = {};
 
-      function isEmpty(obj) {
-        if (Object.keys(obj).length === 0) {
-          return true;
-        } else {
-          return false;
-        }
-        if (obj.length == 0) {
-          return true;
-        } else {
-          return false;
-        }
+      //   function isEmpty(obj) {
+      //     if (Object.keys(obj).length === 0) {
+      //       return true;
+      //     } else {
+      //       return false;
+      //     }
+      //     if (obj.length == 0) {
+      //       return true;
+      //     } else {
+      //       return false;
+      //     }
+      //   }
+      //   isEmpty(obj);
+
+      // + 객체 표기 연습
+      {
+        let obj = {
+          이름: "Nature of Code",
+          가격: "30000원",
+          저자: "Deniel Shifman",
+          ISBM: "9788968481901",
+          페이지: "620",
+        };
       }
-      isEmpty(obj);
-      console.log(isEmpty(obj));
+
+      {
+        let obj = [
+          { 이름: "일벌레", 미네랄: "50", 가스: "0", 보급품: "1" },
+          { 이름: "일벌레", 미네랄: "50", 가스: "0", 보급품: "1" },
+        ];
+      }
+      {
+        let object = {
+          "+": 1,
+          "-": 2,
+          "*": 3,
+          "/": 4,
+        };
+        console.log(object["+"]);
+        console.log(object["-"]);
+        console.log(object["*"]);
+        console.log(object["/"]);
+      }
     </script>
   </body>
 </html>

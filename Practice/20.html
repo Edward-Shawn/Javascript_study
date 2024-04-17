@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //asdfs
+      let nums = [3, 1, 2, 4];
+      function sortArrayByParity(nums) {
+        let nums1 = [];
+        let nums2 = [];
+        for (let i = 0; i < nums.length; i++) {
+          if (nums[i] % 2 == 0) {
+            nums1.push(nums[i]);
+          } else {
+            nums2.push(nums[i]);
+          }
+        }
+
+        let resultArray = nums1.concat(nums2);
+
+        return resultArray;
+      }
+      sortArrayByParity(nums);
+    </script>
+  </body>
+</html>
