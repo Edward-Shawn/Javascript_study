@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // object or array isEmpty?
+      let obj = {};
+
+      function isEmpty(obj) {
+        if (Object.keys(obj).length === 0) {
+          return true;
+        } else {
+          return false;
+        }
+        if (obj.length == 0) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+      isEmpty(obj);
+      console.log(isEmpty(obj));
+    </script>
+  </body>
+</html>
