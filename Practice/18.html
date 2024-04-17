@@ -8,23 +8,76 @@
   <body>
     <script>
       // Intersection of Two Arrays
-      let nums1 = [4, 9, 5];
-      let nums2 = [9, 4, 9, 8, 4];
+      //   let nums1 = [4, 9, 5];
+      //   let nums2 = [9, 4, 9, 8, 4];
+      //   function intersection(nums1, nums2) {
+      //     let resultArray = [];
+      //     for (let i = 0; i < nums1.length; i++) {
+      //       for (let j = 0; j < nums2.length; j++) {
+      //         if (nums1[i] === nums2[j]) {
+      //           resultArray.push(nums1[i]);
+      //         }
+      //       }
+      //     }
+
+      //     let retrunArray = [...new Set(resultArray)];
+      //     return retrunArray;
+      //     console.log(retrunArray);
+      //   }
+      //   intersection(nums1, nums2);
+
+      // Intersection of Two Arrays2
+      let nums1 = [1, 2];
+      let nums2 = [1, 1];
       function intersection(nums1, nums2) {
-        let resultArray = [];
-        for (let i = 0; i < nums1.length; i++) {
-          for (let j = 0; j < nums2.length; j++) {
-            if (nums1[i] === nums2[j]) {
-              resultArray.push(nums1[i]);
+        const frequencyMap1 = {};
+        const frequencyMap2 = {};
+
+        for (const num of nums1) {
+          frequencyMap1[num] = (frequencyMap1[num] || 0) + 1;
+        }
+
+        for (const num of nums2) {
+          frequencyMap2[num] = (frequencyMap2[num] || 0) + 1;
+        }
+
+        const intersection = [];
+
+        for (const key in frequencyMap1) {
+          if (frequencyMap2[key]) {
+            const count = Math.min(frequencyMap1[key], frequencyMap2[key]);
+
+            for (let i = 0; i < count; i++) {
+              intersection.push(parseInt(key));
             }
           }
         }
 
-        let retrunArray = [...new Set(resultArray)];
-        return retrunArray;
-        console.log(retrunArray);
+        return intersection;
       }
       intersection(nums1, nums2);
+
+      //   let resultArray = [];
+      //     let rowLength = [];
+      //     let highLength = [];
+
+      //     if (nums1.length < nums2.length) {
+      //       rowLength = nums1;
+      //       highLength = nums2;
+      //     } else {
+      //       rowLength = nums2;
+      //       highLength = nums1;
+      //     }
+      //     // 길이가 같으면 중복이 있는것 없는것 구별 필요
+      //     console.log(rowLength);
+      //     for (let i = 0; i < rowLength.length; i++) {
+      //       if (highLength.includes(rowLength[i])) {
+      //         console.log(rowLength[i]);
+      //         resultArray.push(rowLength[i]);
+      //       }
+      //     }
+      //     console.log(resultArray);
+      //     return resultArray;
     </script>
   </body>
 </html>
