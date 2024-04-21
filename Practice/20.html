@@ -7,7 +7,27 @@
   </head>
   <body>
     <script>
-      //asdfs
+      // Sort Array By Parity I
+      //   let nums = [3, 1, 2, 4];
+      //   function sortArrayByParity(nums) {
+      //     let nums1 = [];
+      //     let nums2 = [];
+      //     for (let i = 0; i < nums.length; i++) {
+      //       if (nums[i] % 2 == 0) {
+      //         nums1.push(nums[i]);
+      //       } else {
+      //         nums2.push(nums[i]);
+      //       }
+      //     }
+
+      //     let resultArray = nums1.concat(nums2);
+
+      //     return resultArray;
+      //   }
+      //   sortArrayByParity(nums);
+
+      // Sort Array By Parity II
+
       let nums = [3, 1, 2, 4];
       function sortArrayByParity(nums) {
         let nums1 = [];
@@ -19,8 +39,11 @@
             nums2.push(nums[i]);
           }
         }
-
-        let resultArray = nums1.concat(nums2);
+        let resultArray = [];
+        for (let i = 0; i < nums1.length; i++) {
+          resultArray.push(nums1[i]);
+          resultArray.push(nums2[i]);
+        }
 
         return resultArray;
       }

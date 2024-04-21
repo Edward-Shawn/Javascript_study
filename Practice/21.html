@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // findDisappearedNumbers
+
+      let nums = [4, 3, 2, 7, 8, 2, 3, 1];
+      function findDisappearedNumbers(nums) {
+        let count = {};
+
+        for (let num of nums) {
+          count[num] = (count[num] || 0) + 1;
+        }
+
+        let resultArray = [];
+        console.log(count);
+        for (let i = 1; i <= nums.length; i++) {
+          console.log(count[i], nums[i - 1], i);
+          if (!count[i]) {
+            resultArray.push(i);
+          }
+        }
+
+        return resultArray;
+
+        // let checkForArray = [];
+        // let resultArray = [];
+        // for (let i = 0; i < nums.length; i++) {
+        //   checkForArray.push(i + 1);
+        // }
+
+        // for (let i = 0; i < checkForArray.length; i++) {
+        //   if (!nums.includes(checkForArray[i])) {
+        //     resultArray.push(checkForArray[i]);
+        //   }
+        // }
+        // console.log(resultArray);
+        // return resultArray;
+      }
+      findDisappearedNumbers(nums);
+    </script>
+  </body>
+</html>
