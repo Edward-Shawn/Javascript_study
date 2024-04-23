@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //asdfsd
+      let words = ["mass", "as", "superhero", "hero"];
+      // ["as","hero"]
+      // mass
+      //  as
+      function stringMatching(words) {
+        let resultArray = [];
+
+        for (let i = 0; i < words.length; i++) {
+          for (let j = 0; j < words.length; j++) {
+            if (words[i] !== words[j] && words[i].includes(words[j])) {
+              resultArray.push(words[j]);
+            }
+          }
+        }
+        let set = new Set(resultArray);
+        let newArray = [...set];
+
+        return newArray;
+      }
+      stringMatching(words);
+    </script>
+  </body>
+</html>
